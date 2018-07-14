@@ -1,7 +1,8 @@
-package com.computersquid.razipoints
+package com.computersquid.razipoints.ui.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.computersquid.razipoints.R
 
 class TheWillOfGod : AppCompatActivity() {
 
