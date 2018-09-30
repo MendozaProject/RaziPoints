@@ -17,6 +17,7 @@ class MainApplication: Application(), HasSupportFragmentInjector {
     override fun onCreate() {
         super.onCreate()
         mAppComponent = DaggerAppComponent.builder().application(this).build()
+        mAppComponent.inject(this)
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = supportFragmentInjector

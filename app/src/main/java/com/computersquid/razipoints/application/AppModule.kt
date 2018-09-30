@@ -1,7 +1,7 @@
 package com.computersquid.razipoints.application
 
 import android.content.Context
-import com.computersquid.razipoints.ui.model.MyObjectBox
+import com.computersquid.razipoints.model.MyObjectBox
 import dagger.Module
 import dagger.Provides
 import io.objectbox.BoxStore
@@ -13,10 +13,14 @@ object AppModule {
     @Provides
     @Singleton
     @JvmStatic
-    fun provideContext(application: MainApplication): Context = application
+    fun provideContext(application: MainApplication): Context {
+        return application
+    }
 
     @Provides
     @Singleton
     @JvmStatic
-    fun provideBoxStore(context: Context): BoxStore = MyObjectBox.builder().androidContext(context).build()
+    fun provideBoxStore(context: Context): BoxStore {
+        return MyObjectBox.builder().androidContext(context).build()
+    }
 }

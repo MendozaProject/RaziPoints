@@ -4,27 +4,55 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:6949284519968003179",
-      "lastPropertyId": "1:8146023637446216607",
-      "name": "ExampleEntity",
+      "id": "2:336176290842090686",
+      "lastPropertyId": "2:1006336608123667051",
+      "name": "User",
       "properties": [
         {
-          "id": "1:8146023637446216607",
+          "id": "1:8048182784087243613",
           "name": "id"
+        },
+        {
+          "id": "2:1006336608123667051",
+          "name": "points"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:8642819358568189257",
+      "lastPropertyId": "3:6288853050147991134",
+      "name": "Action",
+      "properties": [
+        {
+          "id": "1:8157706001165124327",
+          "name": "id"
+        },
+        {
+          "id": "2:7457513872288322748",
+          "name": "name"
+        },
+        {
+          "id": "3:6288853050147991134",
+          "name": "value"
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:6949284519968003179",
+  "lastEntityId": "3:8642819358568189257",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
-  "retiredEntityUids": [],
+  "retiredEntityUids": [
+    6949284519968003179
+  ],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    8146023637446216607
+  ],
   "retiredRelationUids": [],
   "version": 1
 }
