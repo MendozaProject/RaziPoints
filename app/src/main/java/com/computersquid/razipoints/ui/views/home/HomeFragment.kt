@@ -15,9 +15,14 @@ import com.computersquid.razipoints.model.Action
 import com.computersquid.razipoints.model.User
 import com.computersquid.razipoints.ui.adapter.ActionsAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
-
+import com.computersquid.razipoints.data.UserRepository
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class HomeFragment : Fragment() {
+
+    @Inject
+    lateinit var userRepository: UserRepository
 
     //region Properties
 
@@ -44,6 +49,7 @@ class HomeFragment : Fragment() {
 
         _actionsAdapter = ActionsAdapter(context!!, R.layout.item_action, _actions)
         _viewManager = LinearLayoutManager(context)
+        AndroidSupportInjection.inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
