@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="half_padding">4dp</dimen>
+    <dimen name="default_padding">8dp</dimen>
+    <dimen name="double_padding">16dp</dimen>
+    <dimen name="triple_padding">24dp</dimen>
+    <dimen name="quadruple_padding">32dp</dimen>
+
+    <dimen name="card_padding">12dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+    <dimen name="xxxxxLargeTextSize">96sp</dimen>
+    <dimen name="xxxxLargeTextSize">60sp</dimen>
+    <dimen name="xxxLargeTextSize">48sp</dimen>
+    <dimen name="xxLargeTextSize">34sp</dimen>
+    <dimen name="xLargeTextSize">24sp</dimen>
+    <dimen name="largeTextSize">20sp</dimen>
+    <dimen name="mediumTextSize">16sp</dimen>
+    <dimen name="smallTextSize">14sp</dimen>
+    <dimen name="xSmallTextSize">12sp</dimen>
+    <dimen name="xxSmallTextSize">10sp</dimen>
+
+</resources>
