@@ -13,14 +13,15 @@ buildscript {
     ext.junit_version = '4.12'
     ext.test_runner_version = '1.1.0-alpha4'
     ext.espresso_core_version = '3.1.0-alpha4'
-
+    ext.calligraphy3_version = '3.0.0'
+    ext.viewpump_version = '1.0.0'
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "io.objectbox:objectbox-gradle-plugin:$objectbox_version"
     }

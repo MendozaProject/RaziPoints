@@ -10,7 +10,7 @@ import com.computersquid.razipoints.model.User
 import com.computersquid.razipoints.ui.adapter.ActionsAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-interface HomeViewModel {
+public interface HomeViewModel {
     var user: MutableLiveData<User>
     var actions: MutableLiveData<List<Action>>
 }
