@@ -11,12 +11,26 @@
     android:paddingRight="@dimen/double_padding"
     android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/actionText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Do the thing"
-        android:textColor="@android:color/black"/>
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/actionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do the thing"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/dueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do the thing"
+            android:textColor="@android:color/black"/>
+
+    </LinearLayout>
 
     <include layout="@layout/spacer"/>
 

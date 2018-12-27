@@ -2,10 +2,16 @@ package com.computersquid.razipoints.application
 
 import android.app.Application
 import androidx.fragment.app.Fragment
+import com.computersquid.razipoints.R
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
+import io.github.inflationx.calligraphy3.CalligraphyConfig
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor
+import io.github.inflationx.viewpump.ViewPump
+
+
 
 class MainApplication: Application(), HasSupportFragmentInjector {
 
@@ -18,6 +24,14 @@ class MainApplication: Application(), HasSupportFragmentInjector {
         super.onCreate()
         mAppComponent = DaggerAppComponent.builder().application(this).build()
         mAppComponent.inject(this)
+
+        ViewPump.init(ViewPump.builder()
+                .addInterceptor(CalligraphyInterceptor(
+                        CalligraphyConfig.Builder()
+                                .setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf")
+                                .setFontAttrId(R.attr.fontPath)
+                                .build()))
+                .build())
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = supportFragmentInjector
