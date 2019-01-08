@@ -1,34 +1,31 @@
-package com.computersquid.razipoints.ui.views.action
+package com.computersquid.razipoints.view.fragments
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.SeekBar
 import androidx.fragment.app.DialogFragment
 
 import com.computersquid.razipoints.R
-import com.computersquid.razipoints.model.Action
+import com.computersquid.razipoints.model.Task
 import kotlinx.android.synthetic.main.fragment_action_dialog.*
 
-private const val ACTION_ID = "action_id"
 
-
-class ActionDialogFragment : DialogFragment() {
+class TaskCreationDialogFragment : DialogFragment() {
 
     private var _actionId: Long = 0
-    private lateinit var _action: Action
+    private lateinit var _task: Task
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             _actionId = it.getLong(ACTION_ID)
-            // TODO: Get Action from Repository
+            // TODO: Get Task from Repository
         }
         if (_actionId == 0L) {
-            _action = Action(0, "New Action", 0)
+            _task = Task(0, "New Task", 0)
         } else {
             dismiss()
         }
@@ -47,13 +44,13 @@ class ActionDialogFragment : DialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        pointsValueText.text = _action.value.toString()
-        actionNameTextInput.setText(_action.name)
+        pointsValueText.text = _task.value.toString()
+        actionNameTextInput.setText(_task.name)
         decrementPoints.setOnClickListener {
-            _action.value--
+            _task.value--
         }
         incrementPoints.setOnClickListener {
-            _action.value++
+            _task.value++
         }
         confirmButton.setOnClickListener {
             dismiss()
@@ -86,12 +83,15 @@ class ActionDialogFragment : DialogFragment() {
     }
 
     companion object {
+
+        const val ACTION_ID = "action_id"
+
         @JvmStatic
         val TAG: String = this::class.java.simpleName
 
         @JvmStatic
         fun newInstance(actionId: Long) =
-                ActionDialogFragment().apply {
+                TaskCreationDialogFragment().apply {
                     arguments = Bundle().apply {
                         putLong(ACTION_ID, actionId)
                     }

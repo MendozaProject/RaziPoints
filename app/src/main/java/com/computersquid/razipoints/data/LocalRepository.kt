@@ -10,6 +10,8 @@ open class LocalRepository<T>(boxStore: BoxStore, clazz: Class<T>) {
         box = boxStore.boxFor(clazz);
     }
 
+
+
     companion object {
     }
 }

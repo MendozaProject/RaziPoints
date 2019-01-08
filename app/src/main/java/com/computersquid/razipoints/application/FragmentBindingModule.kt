@@ -1,6 +1,6 @@
 package com.computersquid.razipoints.application
 
-import com.computersquid.razipoints.ui.views.home.HomeFragment
+import com.computersquid.razipoints.view.fragments.HomeFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
