@@ -1,8 +1,9 @@
 package com.computersquid.razipoints.application
 
+import com.computersquid.razipoints.dependency.module.FragmentBindingModule
+import com.computersquid.razipoints.dependency.module.AppModule
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.AndroidInjectionModule
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 

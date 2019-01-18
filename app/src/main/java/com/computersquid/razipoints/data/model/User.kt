@@ -1,4 +1,4 @@
-package com.computersquid.razipoints.model
+package com.computersquid.razipoints.data.model
 
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id

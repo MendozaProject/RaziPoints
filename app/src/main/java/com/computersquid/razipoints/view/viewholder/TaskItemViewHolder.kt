@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 
 import androidx.recyclerview.widget.RecyclerView
 import com.computersquid.razipoints.R
-import com.computersquid.razipoints.model.Task
+import com.computersquid.razipoints.data.model.Task
 import kotlinx.android.synthetic.main.item_action.view.*
 
 class TaskItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {

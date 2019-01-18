@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.computersquid.razipoints.model.Task
+import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.view.viewholder.TaskItemViewHolder
 
 class TaskAdapter(context: Context, itemView:Int, tasks: List<Task>)

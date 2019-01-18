@@ -1,7 +1,8 @@
-package com.computersquid.razipoints.application
+package com.computersquid.razipoints.dependency.module
 
 import android.content.Context
-import com.computersquid.razipoints.model.MyObjectBox
+import com.computersquid.razipoints.application.MainApplication
+import com.computersquid.razipoints.data.model.MyObjectBox
 import dagger.Module
 import dagger.Provides
 import io.objectbox.BoxStore

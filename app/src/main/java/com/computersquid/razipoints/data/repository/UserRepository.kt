@@ -1,6 +1,6 @@
-package com.computersquid.razipoints.data
+package com.computersquid.razipoints.data.repository
 
-import com.computersquid.razipoints.model.User
+import com.computersquid.razipoints.data.model.User
 import io.objectbox.BoxStore
 import javax.inject.Inject
 

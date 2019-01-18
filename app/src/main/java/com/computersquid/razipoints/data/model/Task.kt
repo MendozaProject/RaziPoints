@@ -1,4 +1,4 @@
-package com.computersquid.razipoints.model
+package com.computersquid.razipoints.data.model
 
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
@@ -7,5 +7,6 @@ import io.objectbox.annotation.Id
 data class Task(
         @Id var id: Long = 0,
         var name: String,
-        var value: Int
+        var value: Int,
+        var done: Boolean
 )

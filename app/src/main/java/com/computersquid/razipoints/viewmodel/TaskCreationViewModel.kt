@@ -1,8 +1,7 @@
 package com.computersquid.razipoints.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.computersquid.razipoints.model.Task
-import com.computersquid.razipoints.mvvm.BaseViewModel
+import com.computersquid.razipoints.data.model.Task
 
 interface TaskCreationViewModel {
     var task: MutableLiveData<Task>

@@ -13,8 +13,8 @@
 
         <activity android:name=".view.activity.TheWillOfGod">
             <intent-filter>
-                <task android:name="android.intent.task.MAIN" />
-                <task android:name="android.intent.task.VIEW"/>
+                <action android:name="android.intent.task.MAIN" />
+                <action android:name="android.intent.task.VIEW"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

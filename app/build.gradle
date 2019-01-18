@@ -43,6 +43,7 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$legacy_v4_version"
     implementation "io.github.inflationx:calligraphy3:$calligraphy3_version"
     implementation "io.github.inflationx:viewpump:$viewpump_version"
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test:runner:$test_runner_version"

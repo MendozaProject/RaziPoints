@@ -9,7 +9,7 @@ import android.widget.SeekBar
 import androidx.fragment.app.DialogFragment
 
 import com.computersquid.razipoints.R
-import com.computersquid.razipoints.model.Task
+import com.computersquid.razipoints.data.model.Task
 import kotlinx.android.synthetic.main.fragment_action_dialog.*
 
 
