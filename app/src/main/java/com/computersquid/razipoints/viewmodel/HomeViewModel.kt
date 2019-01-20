@@ -10,4 +10,5 @@ interface HomeViewModel {
     var user: ObjectBoxLiveData<User>
     var tasks: ObjectBoxLiveData<Task>
     fun showActionDialog(fragmentManager: FragmentManager, actionId: Long)
+    fun markTaskAsDone(task: Task)
 }

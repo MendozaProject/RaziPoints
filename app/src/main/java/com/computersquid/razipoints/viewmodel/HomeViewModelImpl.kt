@@ -18,6 +18,13 @@ constructor(val taskRepository: TaskRepository) : HomeViewModel, BaseViewModel()
     override lateinit var user: ObjectBoxLiveData<User>
     override var tasks: ObjectBoxLiveData<Task> = taskRepository.getAll()
 
+    init {
+        taskRepository.add(Task(0, "Task", 12, false))
+        taskRepository.add(Task(0, "Task", 12, false))
+        taskRepository.add(Task(0, "Task", 12, false))
+        taskRepository.add(Task(0, "Task", 12, false))
+    }
+
     override fun showActionDialog(fragmentManager: FragmentManager, actionId: Long){
         val fragmentTransaction = fragmentManager.beginTransaction()
         val previousFragment = fragmentManager.findFragmentByTag(TaskCreationDialogFragment.TAG)
@@ -29,6 +36,11 @@ constructor(val taskRepository: TaskRepository) : HomeViewModel, BaseViewModel()
 
         val actionDialog = TaskCreationDialogFragment.newInstance(0)
         actionDialog.show(fragmentManager, TaskCreationDialogFragment.TAG)
+    }
+
+
+    override fun markTaskAsDone(task: Task) {
+
     }
 
 

@@ -12,9 +12,6 @@ class TaskRepository
 @Inject
 constructor(boxStore: BoxStore) : LocalRepository<Task>(boxStore, Task::class.java) {
 
-    var tasks: MutableList<Task> = ArrayList()
-
-
     fun getAll(): ObjectBoxLiveData<Task> {
         return ObjectBoxLiveData(box.query().order(Task_.id).build())
     }
@@ -26,12 +23,12 @@ constructor(boxStore: BoxStore) : LocalRepository<Task>(boxStore, Task::class.ja
 
 
     fun add(task: Task) {
-        tasks.add(task)
+        box.put(task)
     }
 
 
     fun update(task: Task) {
-
+        box.put(task)
     }
 
 

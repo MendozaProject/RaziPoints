@@ -20,38 +20,42 @@
       "relations": []
     },
     {
-      "id": "3:8642819358568189257",
-      "lastPropertyId": "3:6288853050147991134",
-      "name": "Action",
+      "id": "4:4288992170740389191",
+      "lastPropertyId": "3:663235046659911613",
+      "name": "Task",
       "properties": [
         {
-          "id": "1:8157706001165124327",
+          "id": "1:5479379943673344311",
           "name": "id"
         },
         {
-          "id": "2:7457513872288322748",
+          "id": "2:3988597246148867923",
           "name": "name"
         },
         {
-          "id": "3:6288853050147991134",
+          "id": "3:663235046659911613",
           "name": "value"
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "3:8642819358568189257",
+  "lastEntityId": "4:4288992170740389191",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
   "retiredEntityUids": [
-    6949284519968003179
+    6949284519968003179,
+    8642819358568189257
   ],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
-    8146023637446216607
+    8146023637446216607,
+    8157706001165124327,
+    7457513872288322748,
+    6288853050147991134
   ],
   "retiredRelationUids": [],
   "version": 1

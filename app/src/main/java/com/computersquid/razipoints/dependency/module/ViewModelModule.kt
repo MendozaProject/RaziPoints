@@ -1,38 +1,38 @@
 package com.computersquid.razipoints.dependency.module
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import com.computersquid.razipoints.data.repository.TaskRepository
 import com.computersquid.razipoints.mvvm.ViewModelFactory
-import com.computersquid.razipoints.mvvm.ViewModelKey
 import com.computersquid.razipoints.viewmodel.HomeViewModelImpl
-import com.computersquid.razipoints.viewmodel.TaskCreationViewModelImpl
-import dagger.Binds
 import dagger.MapKey
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
-import javax.inject.Inject
 import javax.inject.Provider
-import javax.inject.Singleton
 import kotlin.reflect.KClass
 
 
 @Module
 abstract class ViewModelModule {
 
-    @Binds
-    internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+    @Target(AnnotationTarget.FUNCTION)
+    @Retention(AnnotationRetention.RUNTIME)
+    @MapKey
+    internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
 
-    @Binds
+    @Provides
+    fun viewModelFactory(providerMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>): ViewModelFactory {
+        return ViewModelFactory(providerMap)
+    }
+
+    @Provides
     @IntoMap
     @ViewModelKey(HomeViewModelImpl::class)
-    internal abstract fun homeViewModel(viewModel: HomeViewModelImpl): ViewModel
+    fun homeViewModel(taskRepository: TaskRepository): ViewModel {
+        return HomeViewModelImpl(taskRepository)
+    }
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(TaskCreationViewModelImpl::class)
-    internal abstract fun taskCreationViewModel(viewModel: TaskCreationViewModelImpl): ViewModel
+    //Different Implementation? https://stackoverflow.com/questions/50673266/viewmodelproviders-with-dagger-2-not-able-to-grasp-the-concept/50681021#50681021
 
-
-
-    //Add more ViewModels here
+    //TODO: Add more ViewModels here
 }
