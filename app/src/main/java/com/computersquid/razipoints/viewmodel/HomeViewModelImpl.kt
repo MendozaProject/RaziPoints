@@ -1,7 +1,6 @@
 package com.computersquid.razipoints.viewmodel
 
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.MutableLiveData
 import com.computersquid.razipoints.data.repository.TaskRepository
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.data.model.User
@@ -13,23 +12,17 @@ import javax.inject.Inject
 
 class HomeViewModelImpl
 @Inject
-constructor(val taskRepository: TaskRepository) : HomeViewModel, BaseViewModel() {
+constructor(private val taskRepository: TaskRepository) : HomeViewModel, BaseViewModel() {
 
-    override lateinit var user: ObjectBoxLiveData<User>
-    override lateinit var tasks: ObjectBoxLiveData<Task>
+    override lateinit var userLiveData: ObjectBoxLiveData<User>
+    override lateinit var tasksLiveData: ObjectBoxLiveData<Task>
+
 
     init {
-        var ret = taskRepository.add(Task(0, "Task", 12, false))
-        assert(ret > 0)
-        ret = taskRepository.add(Task(0, "Task", 12, false))
-        assert(ret > 0)
-        ret = taskRepository.add(Task(0, "Task", 12, false))
-        assert(ret > 0)
-
-        tasks = taskRepository.getAll()
-
-        print(tasks)
+        addTestTask(Task(0, "Task", 12, false))
+        tasksLiveData = taskRepository.getAllLiveData()
     }
+
 
     override fun showActionDialog(fragmentManager: FragmentManager, actionId: Long){
         val fragmentTransaction = fragmentManager.beginTransaction()
@@ -45,8 +38,19 @@ constructor(val taskRepository: TaskRepository) : HomeViewModel, BaseViewModel()
     }
 
 
+    override fun getTasks() : List<Task> {
+        return taskRepository.getAll()
+    }
+
+
     override fun markTaskAsDone(task: Task) {
 
+    }
+
+    override fun addTestTask(task: Task): Long {
+        val ret = taskRepository.add(task)
+        assert(ret > 0)
+        return ret
     }
 
 

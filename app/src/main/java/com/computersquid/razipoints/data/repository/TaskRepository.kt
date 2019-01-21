@@ -10,9 +10,14 @@ import javax.inject.Inject
 
 class TaskRepository
 @Inject
-constructor(boxStore: BoxStore) : LocalRepository<Task>(boxStore, Task::class.java) {
+constructor(private val boxStore: BoxStore) : LocalRepository<Task>(boxStore, Task::class.java) {
 
-    fun getAll(): ObjectBoxLiveData<Task> {
+    fun getAll(): List<Task> {
+        return box.query().order(Task_.id).build().find()
+    }
+
+
+    fun getAllLiveData(): ObjectBoxLiveData<Task> {
         return ObjectBoxLiveData(box.query().order(Task_.id).build())
     }
 

@@ -8,26 +8,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.view.viewholder.TaskItemViewHolder
 
-class TaskAdapter(context: Context, itemView:Int, tasks: List<Task>)
+class TaskAdapter(
+        private var context: Context,
+        itemView:Int,
+        var tasks: MutableList<Task>)
     : RecyclerView.Adapter<TaskItemViewHolder>() {
 
-    private var _tasks: List<Task> = tasks
-    private var _context: Context = context
-    private var _view: Int = itemView
+    private var view: Int = itemView
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskItemViewHolder {
         val view = LayoutInflater
                 .from(parent.context)
-                .inflate(_view, parent, false) as View
+                .inflate(view, parent, false) as View
 
         return TaskItemViewHolder(view)
     }
 
+
     override fun getItemCount(): Int {
-        return _tasks.size
+        return tasks.size
     }
 
+
     override fun onBindViewHolder(holder: TaskItemViewHolder, position: Int) {
-        holder.bindAction(_context, _tasks[position])
+        holder.bindAction(context, tasks[position])
     }
 }

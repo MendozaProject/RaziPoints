@@ -30,8 +30,6 @@ class HomeFragment : BaseFragment() {
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var viewModel: HomeViewModel
 
-    private lateinit var tasks: List<Task>
-
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -45,13 +43,15 @@ class HomeFragment : BaseFragment() {
 
         AndroidSupportInjection.inject(this)
 
-        viewModel = ViewModelProviders.of(activity!!, viewModelFactory).get(HomeViewModelImpl::class.java)
-
-        viewModel.tasks.observe(this, Observer<List<Task>> {
+        viewModel = ViewModelProviders.of(activity!!, viewModelFactory)
+                .get(HomeViewModelImpl::class.java)
+        viewModel.tasksLiveData.observe(this, Observer<List<Task>> { tasks: List<Task> ->
+            taskAdapter.tasks = tasks as MutableList<Task>
             taskAdapter.notifyDataSetChanged()
         })
 
-        taskAdapter = TaskAdapter(context!!, R.layout.item_action, tasks)
+        taskAdapter = TaskAdapter(context!!, R.layout.item_action, viewModel.getTasks() as MutableList<Task>)
+
         viewManager = LinearLayoutManager(context)
 
         recyclerView.apply {
@@ -71,6 +71,7 @@ class HomeFragment : BaseFragment() {
 
         addActionFab.setOnClickListener {
             viewModel.showActionDialog(fragmentManager!!, 0)
+            //viewModel.addTestTask(Task(0, "New Task", 12, false))
         }
     }
 
