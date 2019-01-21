@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,23 +30,35 @@ class HomeFragment : BaseFragment() {
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var viewModel: HomeViewModel
 
+    private lateinit var tasks: List<Task>
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         AndroidSupportInjection.inject(this)
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[HomeViewModelImpl::class.java]
-
-        taskAdapter = TaskAdapter(context!!, R.layout.item_action, viewModel.tasks.value!!)
-        viewManager = LinearLayoutManager(context)
+        viewModel = ViewModelProviders.of(activity!!, viewModelFactory).get(HomeViewModelImpl::class.java)
 
         viewModel.tasks.observe(this, Observer<List<Task>> {
             taskAdapter.notifyDataSetChanged()
         })
+
+        taskAdapter = TaskAdapter(context!!, R.layout.item_action, tasks)
+        viewManager = LinearLayoutManager(context)
+
+        recyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = taskAdapter
+        }
     }
 
 
@@ -55,12 +68,6 @@ class HomeFragment : BaseFragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        recyclerView.apply {
-            setHasFixedSize(true)
-            layoutManager = viewManager
-            adapter = taskAdapter
-        }
 
         addActionFab.setOnClickListener {
             viewModel.showActionDialog(fragmentManager!!, 0)

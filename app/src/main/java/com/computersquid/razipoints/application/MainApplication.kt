@@ -3,6 +3,8 @@ package com.computersquid.razipoints.application
 import android.app.Application
 import androidx.fragment.app.Fragment
 import com.computersquid.razipoints.R
+import com.computersquid.razipoints.dependency.component.AppComponent
+import com.computersquid.razipoints.dependency.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector

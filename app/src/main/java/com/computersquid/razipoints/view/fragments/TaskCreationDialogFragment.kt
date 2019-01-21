@@ -25,7 +25,7 @@ class TaskCreationDialogFragment : DialogFragment() {
             // TODO: Get Task from Repository
         }
         if (_actionId == 0L) {
-            _task = Task(0, "New Task", 0)
+            _task = Task(0, "New Task", 0, false)
         } else {
             dismiss()
         }

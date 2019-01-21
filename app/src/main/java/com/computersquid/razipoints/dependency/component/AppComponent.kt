@@ -1,14 +1,23 @@
-package com.computersquid.razipoints.application
+package com.computersquid.razipoints.dependency.component
 
+import com.computersquid.razipoints.application.MainApplication
 import com.computersquid.razipoints.dependency.module.FragmentBindingModule
 import com.computersquid.razipoints.dependency.module.AppModule
+import com.computersquid.razipoints.dependency.module.RepositoryModule
+import com.computersquid.razipoints.dependency.module.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules=arrayOf(AppModule::class, AndroidSupportInjectionModule::class, FragmentBindingModule::class))
+@Component(modules= [
+    AppModule::class,
+    AndroidSupportInjectionModule::class,
+    FragmentBindingModule::class,
+    ViewModelModule::class,
+    RepositoryModule::class
+])
 interface AppComponent {
 
     @Component.Builder

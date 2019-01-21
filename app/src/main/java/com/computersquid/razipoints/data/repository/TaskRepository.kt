@@ -22,13 +22,13 @@ constructor(boxStore: BoxStore) : LocalRepository<Task>(boxStore, Task::class.ja
     }
 
 
-    fun add(task: Task) {
-        box.put(task)
+    fun add(task: Task): Long {
+        return box.put(task)
     }
 
 
-    fun update(task: Task) {
-        box.put(task)
+    fun update(task: Task):Long {
+        return box.put(task)
     }
 
 

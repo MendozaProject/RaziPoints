@@ -16,13 +16,19 @@ class HomeViewModelImpl
 constructor(val taskRepository: TaskRepository) : HomeViewModel, BaseViewModel() {
 
     override lateinit var user: ObjectBoxLiveData<User>
-    override var tasks: ObjectBoxLiveData<Task> = taskRepository.getAll()
+    override lateinit var tasks: ObjectBoxLiveData<Task>
 
     init {
-        taskRepository.add(Task(0, "Task", 12, false))
-        taskRepository.add(Task(0, "Task", 12, false))
-        taskRepository.add(Task(0, "Task", 12, false))
-        taskRepository.add(Task(0, "Task", 12, false))
+        var ret = taskRepository.add(Task(0, "Task", 12, false))
+        assert(ret > 0)
+        ret = taskRepository.add(Task(0, "Task", 12, false))
+        assert(ret > 0)
+        ret = taskRepository.add(Task(0, "Task", 12, false))
+        assert(ret > 0)
+
+        tasks = taskRepository.getAll()
+
+        print(tasks)
     }
 
     override fun showActionDialog(fragmentManager: FragmentManager, actionId: Long){
