@@ -3,6 +3,7 @@ package com.computersquid.razipoints.view.activity
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.computersquid.razipoints.R
 import com.computersquid.razipoints.view.fragments.HomeFragment
@@ -14,8 +15,6 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper
 class TheWillOfGod : AppCompatActivity() {
 
     private var fragmentManager = supportFragmentManager
-    private var homeFragment: HomeFragment? = HomeFragment.newInstance()
-
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
@@ -26,15 +25,18 @@ class TheWillOfGod : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showFragment()
+        showFragment("TAGGG")
+        showFragment("TAWWWGGG")
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+    }
 
-    private fun showFragment () {
-        if (null == homeFragment) homeFragment = HomeFragment.newInstance()
-
+    private fun showFragment (tag: String) {
         fragmentManager.beginTransaction()
-                .replace(this.rootContainer.id, homeFragment!!, HomeFragment.TAG)
+                .replace(this.rootContainer.id, HomeFragment.newInstance(), tag)
+                .addToBackStack(null)
                 .commit()
     }
 }

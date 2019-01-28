@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.TheWillOfGod">
+    tools:context=".view.activity.TheWillOfGod"
+    android:id="@+id/will_of_god">
 
     <FrameLayout
         android:id="@+id/rootContainer"
