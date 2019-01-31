@@ -9,8 +9,10 @@ import io.objectbox.android.ObjectBoxLiveData
 import javax.inject.Inject
 
 class TaskRepository
+
 @Inject
-constructor(private val boxStore: BoxStore) : LocalRepository<Task>(boxStore, Task::class.java) {
+constructor(boxStore: BoxStore)
+    : LocalRepository<Task>(boxStore, Task::class.java) {
 
     fun getAll(): List<Task> {
         return box.query().order(Task_.id).build().find()

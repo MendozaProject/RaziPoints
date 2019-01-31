@@ -19,6 +19,7 @@
 
     <style name="Text.Header" parent="Text">
         <item name="fontPath">fonts/Quicksand-Bold.otf</item>
+        <item name="android:textSize">@dimen/xLargeTextSize</item>
     </style>
 
 

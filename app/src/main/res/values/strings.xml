@@ -3,4 +3,19 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="num_points_single">%1$d Points</string>
+    <string name="num_points_plural">%1$d Points</string>
+    <string name="header_due_today">Due Today</string>
+    <string name="header_finished_tasks">Finished Tasks</string>
+    <string name="header_future_due">Future Due</string>
+    <string name="done">Done</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="task_what">What is the task?</string>
+    <string name="task_difficulty">How difficult is this task?</string>
+    <string name="task_add_description">Add Description</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Somewhat Difficult</string>
+    <string name="difficulty_hard">Hard</string>
 </resources>

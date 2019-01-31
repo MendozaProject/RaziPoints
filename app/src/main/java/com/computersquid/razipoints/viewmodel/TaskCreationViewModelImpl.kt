@@ -1,11 +1,18 @@
 package com.computersquid.razipoints.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import com.computersquid.razipoints.data.model.Task
+import com.computersquid.razipoints.data.repository.TaskRepository
 import com.computersquid.razipoints.mvvm.BaseViewModel
+import javax.inject.Inject
 
 
-class TaskCreationViewModelImpl(override var task: MutableLiveData<Task>)
-    : TaskCreationViewModel, BaseViewModel() {
+class TaskCreationViewModelImpl
+@Inject
+constructor(
+        private val taskRepository: TaskRepository
+) : TaskCreationViewModel, BaseViewModel() {
+
+    val task : Task = Task()
+
 
 }

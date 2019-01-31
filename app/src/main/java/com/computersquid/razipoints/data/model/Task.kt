@@ -6,7 +6,7 @@ import io.objectbox.annotation.Id
 @Entity
 data class Task(
         @Id var id: Long = 0,
-        var name: String,
-        var value: Int,
-        var done: Boolean
+        var name: String = "New Task",
+        var value: Int = 0,
+        var done: Boolean = false
 )

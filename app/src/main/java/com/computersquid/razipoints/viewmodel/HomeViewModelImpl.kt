@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentManager
 import com.computersquid.razipoints.data.repository.TaskRepository
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.data.model.User
+import com.computersquid.razipoints.data.repository.UserRepository
 import com.computersquid.razipoints.mvvm.BaseViewModel
 import com.computersquid.razipoints.view.fragments.TaskCreationDialogFragment
 import io.objectbox.android.ObjectBoxLiveData
@@ -12,15 +13,16 @@ import javax.inject.Inject
 
 class HomeViewModelImpl
 @Inject
-constructor(private val taskRepository: TaskRepository) : HomeViewModel, BaseViewModel() {
+constructor(
+        private val taskRepository: TaskRepository,
+        private val userRepository: UserRepository
+) : HomeViewModel, BaseViewModel() {
 
-    override lateinit var userLiveData: ObjectBoxLiveData<User>
-    override lateinit var tasksLiveData: ObjectBoxLiveData<Task>
-
+    override val userLiveData: ObjectBoxLiveData<User> = userRepository.getUserLiveData(1)
+    override val tasksLiveData: ObjectBoxLiveData<Task> = taskRepository.getAllLiveData()
 
     init {
-        addTestTask(Task(0, "Task", 12, false))
-        tasksLiveData = taskRepository.getAllLiveData()
+        //addTestTask(Task(0, "Task", 12, false))
     }
 
 
@@ -37,6 +39,9 @@ constructor(private val taskRepository: TaskRepository) : HomeViewModel, BaseVie
         actionDialog.show(fragmentManager, TaskCreationDialogFragment.TAG)
     }
 
+    override fun getUser() : User {
+        return userRepository.getById(1)
+    }
 
     override fun getTasks() : List<Task> {
         return taskRepository.getAll()
