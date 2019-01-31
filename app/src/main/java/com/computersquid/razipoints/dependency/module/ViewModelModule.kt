@@ -3,12 +3,11 @@ package com.computersquid.razipoints.dependency.module
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.computersquid.razipoints.dependency.ViewModelFactory
-import com.computersquid.razipoints.view.fragments.HomeFragment
 import com.computersquid.razipoints.viewmodel.HomeViewModelImpl
+import com.computersquid.razipoints.viewmodel.TaskCreatorViewModelImpl
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 import kotlin.reflect.KClass
 
@@ -30,4 +29,9 @@ internal abstract class ViewModelModule {
     @ViewModelKey(HomeViewModelImpl::class)
     abstract fun bindHomeViewModel(viewModel: HomeViewModelImpl): ViewModel
 
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TaskCreatorViewModelImpl::class)
+    abstract fun bindTaskCreatorViewModel(viewModel: TaskCreatorViewModelImpl): ViewModel
 }

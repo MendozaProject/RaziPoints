@@ -5,21 +5,17 @@ import androidx.viewpager.widget.PagerAdapter
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
-
-
-
-class FragmentlessViewPagerItem(
-        val layoutResId: Int,
-        val title: String
-)
+import com.computersquid.razipoints.utils.FragmentlessViewPagerItem
 
 
 class FragmentlessViewPagerAdapter(
         private val context: Context,
-        private val layouts: List<FragmentlessViewPagerItem>) : PagerAdapter() {
+        private val layouts: List<FragmentlessViewPagerItem>
+) : PagerAdapter() {
 
 
     override fun instantiateItem(collection: ViewGroup, position: Int): Any {
+        assert(position < layouts.size)
 
         val inflater = LayoutInflater.from(context)
         val page = layouts[position]
@@ -36,12 +32,12 @@ class FragmentlessViewPagerAdapter(
 
 
     override fun getCount(): Int {
-        return layouts.count()
+        return layouts.size
     }
 
 
-    override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view === `object`
+    override fun isViewFromObject(view: View, anObject: Any): Boolean {
+        return view == anObject
     }
 
 

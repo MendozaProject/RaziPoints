@@ -22,11 +22,11 @@ constructor(
     override val tasksLiveData: ObjectBoxLiveData<Task> = taskRepository.getAllLiveData()
 
     init {
-        //addTestTask(Task(0, "Task", 12, false))
+
     }
 
 
-    override fun showActionDialog(fragmentManager: FragmentManager, actionId: Long){
+    override fun startTaskCreationFragment(fragmentManager: FragmentManager, actionId: Long){
         val fragmentTransaction = fragmentManager.beginTransaction()
         val previousFragment = fragmentManager.findFragmentByTag(TaskCreationDialogFragment.TAG)
 
@@ -39,9 +39,11 @@ constructor(
         actionDialog.show(fragmentManager, TaskCreationDialogFragment.TAG)
     }
 
+
     override fun getUser() : User {
         return userRepository.getById(1)
     }
+
 
     override fun getTasks() : List<Task> {
         return taskRepository.getAll()
@@ -51,6 +53,7 @@ constructor(
     override fun markTaskAsDone(task: Task) {
 
     }
+
 
     override fun addTestTask(task: Task): Long {
         val ret = taskRepository.add(task)

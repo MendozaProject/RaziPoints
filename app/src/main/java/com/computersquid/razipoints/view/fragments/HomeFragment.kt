@@ -27,15 +27,38 @@ import javax.inject.Inject
 class HomeFragment : BaseFragment() {
 
     private lateinit var taskAdapter: TaskAdapter
-    private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var viewModel: HomeViewModel
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        AndroidSupportInjection.inject(this)
+
+        viewModel = ViewModelProviders
+                .of(this, viewModelFactory)
+                .get(HomeViewModelImpl::class.java)
+
+        viewModel.tasksLiveData.observe(this,
+                Observer<List<Task>> { tasks: List<Task> ->
+                    taskAdapter.tasks = tasks as MutableList<Task>
+                    taskAdapter.notifyDataSetChanged()
+                })
+
+//        viewModel.userLiveData.observe(this,
+//                Observer<User> { user: User ->
+//                    pointsValueText.text = user.points.toString()
+//                })
+//
+        taskAdapter = TaskAdapter(context!!, R.layout.item_task, viewModel.getTasks() as MutableList<Task>)
     }
 
 
@@ -45,47 +68,23 @@ class HomeFragment : BaseFragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-    }
-
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        AndroidSupportInjection.inject(this)
-
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
-                .get(HomeViewModelImpl::class.java)
-
-        viewModel.tasksLiveData.observe(this, Observer<List<Task>> { tasks: List<Task> ->
-            taskAdapter.tasks = tasks as MutableList<Task>
-            taskAdapter.notifyDataSetChanged()
-        })
-
-        viewModel.userLiveData.observe(this, Observer<User> { user: User ->
-            pointsValueText.text = user.points.toString()
-        })
-
-        taskAdapter = TaskAdapter(context!!, R.layout.item_task, viewModel.getTasks() as MutableList<Task>)
-
-        viewManager = LinearLayoutManager(context)
-
         recyclerView.apply {
             setHasFixedSize(true)
-            layoutManager = viewManager
+            layoutManager = LinearLayoutManager(context)
             adapter = taskAdapter
         }
 
         addActionFab.setOnClickListener {
-            viewModel.showActionDialog(fragmentManager!!, 0)
+            viewModel.startTaskCreationFragment(fragmentManager!!, 0)
             //viewModel.addTestTask(Task(0, "New Task", 12, false))
         }
     }
 
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
     }
+
 
 
     override fun onDetach() {
@@ -101,8 +100,4 @@ class HomeFragment : BaseFragment() {
         @JvmStatic
         fun newInstance() = HomeFragment()
     }
-}
-
-private fun <T> ObjectBoxLiveData<T>.observe(homeFragment: HomeFragment, observer: Observer<T>) {
-
 }

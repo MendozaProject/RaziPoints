@@ -5,14 +5,22 @@ import com.computersquid.razipoints.data.repository.TaskRepository
 import com.computersquid.razipoints.mvvm.BaseViewModel
 import javax.inject.Inject
 
-
-class TaskCreationViewModelImpl
+class TaskCreatorViewModelImpl
 @Inject
 constructor(
         private val taskRepository: TaskRepository
-) : TaskCreationViewModel, BaseViewModel() {
+) : TaskCreatorViewModel, BaseViewModel() {
 
-    val task : Task = Task()
+    override lateinit var taskLiveData: Task
+    override var currentPage: Int = 0
 
 
+    override fun nextButtonClick() {
+        currentPage++
+    }
+
+
+    override fun backButtonClick() {
+        currentPage--
+    }
 }
