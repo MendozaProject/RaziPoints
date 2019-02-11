@@ -1,4 +1,4 @@
-package com.computersquid.razipoints.view.fragments
+package com.computersquid.razipoints.ui.fragments
 
 import android.content.Context
 import android.os.Bundle

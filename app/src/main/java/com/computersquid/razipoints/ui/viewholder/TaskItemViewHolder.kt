@@ -1,4 +1,4 @@
-package com.computersquid.razipoints.view.viewholder
+package com.computersquid.razipoints.ui.viewholder
 
 import android.content.Context
 import android.view.View
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_task.view.*
 
 class TaskItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    fun bindAction(context: Context, task: Task){
+    fun bindView(context: Context, task: Task){
 
         var iconRes = 0
         var colorRes = 0

@@ -1,11 +1,10 @@
-package com.computersquid.razipoints.view.activity
+package com.computersquid.razipoints.ui.activity
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.computersquid.razipoints.R
-import com.computersquid.razipoints.view.fragments.HomeFragment
+import com.computersquid.razipoints.ui.fragments.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 

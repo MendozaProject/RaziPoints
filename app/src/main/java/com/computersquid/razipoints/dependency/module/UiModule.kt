@@ -2,7 +2,7 @@ package com.computersquid.razipoints.dependency.module
 
 import androidx.lifecycle.ViewModelProvider
 import com.computersquid.razipoints.dependency.ViewModelFactory
-import com.computersquid.razipoints.view.activity.TheWillOfGod
+import com.computersquid.razipoints.ui.activity.TheWillOfGod
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

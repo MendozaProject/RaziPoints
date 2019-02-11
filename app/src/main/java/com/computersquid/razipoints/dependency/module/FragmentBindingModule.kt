@@ -1,8 +1,7 @@
 package com.computersquid.razipoints.dependency.module
 
-import com.computersquid.razipoints.view.fragments.HomeFragment
-import com.computersquid.razipoints.view.fragments.TaskCreationDialogFragment
-import com.computersquid.razipoints.view.fragments.TaskCreatorFragment
+import com.computersquid.razipoints.ui.fragments.HomeFragment
+import com.computersquid.razipoints.ui.fragments.TaskCreatorFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

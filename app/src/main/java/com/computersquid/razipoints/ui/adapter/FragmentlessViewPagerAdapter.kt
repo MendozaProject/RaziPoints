@@ -1,4 +1,4 @@
-package com.computersquid.razipoints.view.adapter
+package com.computersquid.razipoints.ui.adapter
 
 import android.content.Context
 import androidx.viewpager.widget.PagerAdapter

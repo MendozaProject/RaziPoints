@@ -6,7 +6,7 @@ import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.data.model.User
 import com.computersquid.razipoints.data.repository.UserRepository
 import com.computersquid.razipoints.mvvm.BaseViewModel
-import com.computersquid.razipoints.view.fragments.TaskCreationDialogFragment
+import com.computersquid.razipoints.ui.fragments.TaskCreationDialogFragment
 import io.objectbox.android.ObjectBoxLiveData
 import javax.inject.Inject
 

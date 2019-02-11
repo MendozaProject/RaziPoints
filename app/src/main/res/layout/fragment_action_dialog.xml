@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".view.fragments.TaskCreationDialogFragment"
+    tools:context=".ui.fragments.TaskCreationDialogFragment"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:layout_margin="@dimen/default_padding">

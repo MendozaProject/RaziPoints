@@ -1,4 +1,4 @@
-package com.computersquid.razipoints.view.fragments
+package com.computersquid.razipoints.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -9,19 +9,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 import com.computersquid.razipoints.R
 import com.computersquid.razipoints.data.model.Task
-import com.computersquid.razipoints.data.model.User
-import com.computersquid.razipoints.view.adapter.TaskAdapter
+import com.computersquid.razipoints.ui.adapter.TaskAdapter
 import com.computersquid.razipoints.mvvm.BaseFragment
 import com.computersquid.razipoints.viewmodel.HomeViewModel
 import com.computersquid.razipoints.viewmodel.HomeViewModelImpl
 import kotlinx.android.synthetic.main.fragment_home.*
 import dagger.android.support.AndroidSupportInjection
-import io.objectbox.android.ObjectBoxLiveData
-import kotlinx.android.synthetic.main.item_task.*
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment() {

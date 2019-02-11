@@ -1,4 +1,4 @@
-package com.computersquid.razipoints.view.adapter
+package com.computersquid.razipoints.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.computersquid.razipoints.data.model.Task
-import com.computersquid.razipoints.view.viewholder.TaskItemViewHolder
+import com.computersquid.razipoints.ui.viewholder.TaskItemViewHolder
 
 class TaskAdapter(
         private var context: Context,
@@ -32,6 +32,6 @@ class TaskAdapter(
 
 
     override fun onBindViewHolder(holder: TaskItemViewHolder, position: Int) {
-        holder.bindAction(context, tasks[position])
+        holder.bindView(context, tasks[position])
     }
 }
