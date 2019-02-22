@@ -1,4 +1,4 @@
-package com.computersquid.razipoints.viewmodel
+package com.computersquid.razipoints.ui.viewmodel
 
 import com.computersquid.razipoints.data.model.Task
 

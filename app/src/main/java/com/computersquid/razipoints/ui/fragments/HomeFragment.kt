@@ -13,11 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.computersquid.razipoints.R
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.ui.adapter.TaskAdapter
-import com.computersquid.razipoints.mvvm.BaseFragment
-import com.computersquid.razipoints.viewmodel.HomeViewModel
-import com.computersquid.razipoints.viewmodel.HomeViewModelImpl
+import com.computersquid.razipoints.ui.mvvm.BaseFragment
+import com.computersquid.razipoints.ui.viewmodel.HomeViewModel
+import com.computersquid.razipoints.ui.viewmodel.HomeViewModelImpl
 import kotlinx.android.synthetic.main.fragment_home.*
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.layout_home_toolbar.*
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment() {
@@ -51,9 +52,9 @@ class HomeFragment : BaseFragment() {
 
 //        viewModel.userLiveData.observe(this,
 //                Observer<User> { user: User ->
-//                    pointsValueText.text = user.points.toString()
+//                    numPoints.text = user.points.toString()
 //                })
-//
+
         taskAdapter = TaskAdapter(context!!, R.layout.item_task, viewModel.getTasks() as MutableList<Task>)
     }
 
@@ -74,6 +75,8 @@ class HomeFragment : BaseFragment() {
             viewModel.startTaskCreationFragment(fragmentManager!!, 0)
             //viewModel.addTestTask(Task(0, "New Task", 12, false))
         }
+        toolbarTitle.text = "Taskboard"
+        numPoints.text = resources.getQuantityString(R.plurals.num_points, viewModel.getUser().points, viewModel.getUser().points)
     }
 
 

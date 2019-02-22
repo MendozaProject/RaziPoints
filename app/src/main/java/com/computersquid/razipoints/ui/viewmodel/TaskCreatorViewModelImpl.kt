@@ -1,8 +1,8 @@
-package com.computersquid.razipoints.viewmodel
+package com.computersquid.razipoints.ui.viewmodel
 
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.data.repository.TaskRepository
-import com.computersquid.razipoints.mvvm.BaseViewModel
+import com.computersquid.razipoints.ui.mvvm.BaseViewModel
 import javax.inject.Inject
 
 class TaskCreatorViewModelImpl

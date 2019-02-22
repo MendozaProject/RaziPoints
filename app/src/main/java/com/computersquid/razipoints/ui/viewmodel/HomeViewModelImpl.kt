@@ -1,11 +1,11 @@
-package com.computersquid.razipoints.viewmodel
+package com.computersquid.razipoints.ui.viewmodel
 
 import androidx.fragment.app.FragmentManager
 import com.computersquid.razipoints.data.repository.TaskRepository
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.data.model.User
 import com.computersquid.razipoints.data.repository.UserRepository
-import com.computersquid.razipoints.mvvm.BaseViewModel
+import com.computersquid.razipoints.ui.mvvm.BaseViewModel
 import com.computersquid.razipoints.ui.fragments.TaskCreationDialogFragment
 import io.objectbox.android.ObjectBoxLiveData
 import javax.inject.Inject
@@ -22,7 +22,6 @@ constructor(
     override val tasksLiveData: ObjectBoxLiveData<Task> = taskRepository.getAllLiveData()
 
     init {
-
     }
 
 

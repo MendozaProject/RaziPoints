@@ -3,8 +3,8 @@ package com.computersquid.razipoints.dependency.module
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.computersquid.razipoints.dependency.ViewModelFactory
-import com.computersquid.razipoints.viewmodel.HomeViewModelImpl
-import com.computersquid.razipoints.viewmodel.TaskCreatorViewModelImpl
+import com.computersquid.razipoints.ui.viewmodel.HomeViewModelImpl
+import com.computersquid.razipoints.ui.viewmodel.TaskCreatorViewModelImpl
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module

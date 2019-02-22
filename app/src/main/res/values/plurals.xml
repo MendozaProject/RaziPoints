@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="num_points">
+        <item quantity="one">%1$d Point</item>
+        <item quantity="other">%1$d Points</item>
+    </plurals>
+</resources>

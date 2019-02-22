@@ -1,7 +1,6 @@
-package com.computersquid.razipoints.viewmodel
+package com.computersquid.razipoints.ui.viewmodel
 
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.ViewModel
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.data.model.User
 import io.objectbox.android.ObjectBoxLiveData

@@ -13,6 +13,8 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@android:color/white">
 
+        <include layout="@layout/layout_home_toolbar"/>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView

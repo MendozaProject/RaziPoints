@@ -11,11 +11,11 @@ import androidx.lifecycle.ViewModelProviders
 
 import com.computersquid.razipoints.R
 import com.computersquid.razipoints.data.model.Task
-import com.computersquid.razipoints.mvvm.BaseFragment
+import com.computersquid.razipoints.ui.mvvm.BaseFragment
 import com.computersquid.razipoints.utils.FragmentlessViewPagerItem
 import com.computersquid.razipoints.ui.adapter.FragmentlessViewPagerAdapter
-import com.computersquid.razipoints.viewmodel.TaskCreatorViewModel
-import com.computersquid.razipoints.viewmodel.TaskCreatorViewModelImpl
+import com.computersquid.razipoints.ui.viewmodel.TaskCreatorViewModel
+import com.computersquid.razipoints.ui.viewmodel.TaskCreatorViewModelImpl
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_task_creator.*
 import javax.inject.Inject
