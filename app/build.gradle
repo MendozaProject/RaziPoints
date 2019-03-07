@@ -56,4 +56,5 @@ dependencies {
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test:runner:$test_runner_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0-rc02'
 }

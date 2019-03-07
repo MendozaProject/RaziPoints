@@ -8,7 +8,7 @@ import com.computersquid.razipoints.R
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.ui.fragments.HomeFragment
 import com.computersquid.razipoints.ui.fragments.TaskCreatorFragment
-import com.computersquid.razipoints.ui.interfaces.FragmentNavigationDirectory
+import com.computersquid.razipoints.ui.navigation.FragmentNavigationDirectory
 import kotlinx.android.synthetic.main.activity_main.*
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 
@@ -16,8 +16,8 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper
 class TheWillOfGod : AppCompatActivity(), FragmentNavigationDirectory {
 
     private var fragmentManager = supportFragmentManager
-    private var homeFragment: HomeFragment? = HomeFragment.newInstance()
-    private var taskCreatorFragment: TaskCreatorFragment? = TaskCreatorFragment.newInstance(Task())
+    private var homeFragment: HomeFragment? = null
+    private var taskCreatorFragment: TaskCreatorFragment? = null
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
@@ -40,7 +40,7 @@ class TheWillOfGod : AppCompatActivity(), FragmentNavigationDirectory {
 
 
     override fun showHomeFragment() {
-        if (homeFragment != null) {
+        if (homeFragment == null) {
             homeFragment = HomeFragment.newInstance()
         }
         showFragment(homeFragment, HomeFragment.TAG)
@@ -48,7 +48,7 @@ class TheWillOfGod : AppCompatActivity(), FragmentNavigationDirectory {
 
 
     override fun showTaskCreationFragment(task: Task) {
-        if (taskCreatorFragment != null) {
+        if (taskCreatorFragment == null) {
             taskCreatorFragment = TaskCreatorFragment.newInstance(task)
         }
         showFragment(taskCreatorFragment, HomeFragment.TAG)

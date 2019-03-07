@@ -13,18 +13,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.computersquid.razipoints.R
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.ui.adapter.TaskAdapter
+import com.computersquid.razipoints.ui.navigation.FragmentNavigationDirectory
 import com.computersquid.razipoints.ui.mvvm.BaseFragment
+import com.computersquid.razipoints.ui.viewmodel.contract.HomeViewModelContract
 import com.computersquid.razipoints.ui.viewmodel.HomeViewModel
-import com.computersquid.razipoints.ui.viewmodel.HomeViewModelImpl
 import kotlinx.android.synthetic.main.fragment_home.*
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.layout_home_toolbar.*
 import javax.inject.Inject
 
+
+
 class HomeFragment : BaseFragment() {
 
+    private var navigation: FragmentNavigationDirectory? = null
     private lateinit var taskAdapter: TaskAdapter
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModelContract: HomeViewModelContract
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -32,6 +36,11 @@ class HomeFragment : BaseFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        if (context is FragmentNavigationDirectory){
+            navigation = context
+        } else {
+            throw RuntimeException("$context must implement OnFragmentInteractionListener")
+        }
     }
 
 
@@ -39,23 +48,20 @@ class HomeFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
 
         AndroidSupportInjection.inject(this)
+        viewModelContract = ViewModelProviders.of(this, viewModelFactory)
+                .get(HomeViewModel::class.java)
 
-        viewModel = ViewModelProviders
-                .of(this, viewModelFactory)
-                .get(HomeViewModelImpl::class.java)
+        viewModelContract.tasksLiveData.observe(this, Observer<List<Task>> { tasks: List<Task> ->
+            taskAdapter.tasks = tasks as MutableList<Task>
+            taskAdapter.notifyDataSetChanged()
+        })
 
-        viewModel.tasksLiveData.observe(this,
-                Observer<List<Task>> { tasks: List<Task> ->
-                    taskAdapter.tasks = tasks as MutableList<Task>
-                    taskAdapter.notifyDataSetChanged()
-                })
-
-//        viewModel.userLiveData.observe(this,
+//        viewModelContract.userLiveData.observe(this,
 //                Observer<User> { user: User ->
 //                    numPoints.text = user.points.toString()
 //                })
 
-        taskAdapter = TaskAdapter(context!!, R.layout.item_task, viewModel.getTasks() as MutableList<Task>)
+        taskAdapter = TaskAdapter(context!!, R.layout.item_task, viewModelContract.tasks as MutableList<Task>)
     }
 
 
@@ -72,11 +78,10 @@ class HomeFragment : BaseFragment() {
         }
 
         addActionFab.setOnClickListener {
-            viewModel.startTaskCreationFragment(fragmentManager!!, 0)
-            //viewModel.addTestTask(Task(0, "New Task", 12, false))
+            navigation!!.showTaskCreationFragment(Task())
         }
         toolbarTitle.text = "Taskboard"
-        numPoints.text = resources.getQuantityString(R.plurals.num_points, viewModel.getUser().points, viewModel.getUser().points)
+        numPoints.text = resources.getQuantityString(R.plurals.num_points, viewModelContract.user.points, viewModelContract.user.points)
     }
 
 
@@ -85,9 +90,9 @@ class HomeFragment : BaseFragment() {
     }
 
 
-
     override fun onDetach() {
         super.onDetach()
+        navigation = null
     }
 
 

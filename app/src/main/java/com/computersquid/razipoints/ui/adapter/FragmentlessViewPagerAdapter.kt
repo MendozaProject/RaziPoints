@@ -10,18 +10,20 @@ import com.computersquid.razipoints.utils.FragmentlessViewPagerItem
 
 class FragmentlessViewPagerAdapter(
         private val context: Context,
-        private val layouts: List<FragmentlessViewPagerItem>
+        private val pagerItems: List<FragmentlessViewPagerItem>
 ) : PagerAdapter() {
+
+    val pages: MutableList<ViewGroup> = mutableListOf()
 
 
     override fun instantiateItem(collection: ViewGroup, position: Int): Any {
-        assert(position < layouts.size)
+        assert(position < pagerItems.size)
 
         val inflater = LayoutInflater.from(context)
-        val page = layouts[position]
-
+        val page = pagerItems[position]
         val layout = inflater.inflate(page.layoutResId, collection, false) as ViewGroup
         collection.addView(layout)
+        pages.add(layout)
         return layout
     }
 
@@ -32,7 +34,7 @@ class FragmentlessViewPagerAdapter(
 
 
     override fun getCount(): Int {
-        return layouts.size
+        return pagerItems.size
     }
 
 
@@ -42,7 +44,7 @@ class FragmentlessViewPagerAdapter(
 
 
     override fun getPageTitle(position: Int): CharSequence? {
-        val page = layouts[position]
+        val page = pagerItems[position]
         return page.title
     }
 }

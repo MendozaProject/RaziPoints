@@ -21,6 +21,7 @@
         android:layout_marginBottom="@dimen/double_padding"/>
 
     <Button
+        android:id="@+id/taskDescriptionAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/task_add_description"

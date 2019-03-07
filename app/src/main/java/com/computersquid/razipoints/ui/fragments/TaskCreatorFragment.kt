@@ -6,18 +6,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 
 import com.computersquid.razipoints.R
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.ui.mvvm.BaseFragment
-import com.computersquid.razipoints.utils.FragmentlessViewPagerItem
 import com.computersquid.razipoints.ui.adapter.FragmentlessViewPagerAdapter
+import com.computersquid.razipoints.ui.navigation.FragmentNavigationDirectory
+import com.computersquid.razipoints.ui.viewmodel.contract.TaskCreatorViewModelContract
 import com.computersquid.razipoints.ui.viewmodel.TaskCreatorViewModel
-import com.computersquid.razipoints.ui.viewmodel.TaskCreatorViewModelImpl
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_task_creator.*
+import kotlinx.android.synthetic.main.fragment_task_input_info.view.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 import javax.inject.Inject
 
 
@@ -26,7 +30,9 @@ private const val TASK_PARAM = "task_argument"
 class TaskCreatorFragment : BaseFragment() {
 
     private lateinit var pagerAdapter: FragmentlessViewPagerAdapter
-    private lateinit var viewModel: TaskCreatorViewModel
+    private lateinit var viewModelContract: TaskCreatorViewModelContract
+    private var navigation: FragmentNavigationDirectory? = null
+
 
     val NAME_POSITION = 0
     val DIFFICULTY_POSITION = 1
@@ -39,6 +45,11 @@ class TaskCreatorFragment : BaseFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        if (context is FragmentNavigationDirectory){
+            navigation = context
+        } else {
+            throw RuntimeException("$context must implement OnFragmentInteractionListener") as Throwable
+        }
     }
 
 
@@ -51,21 +62,20 @@ class TaskCreatorFragment : BaseFragment() {
 
         AndroidSupportInjection.inject(this)
 
-        viewModel = ViewModelProviders
-                .of(this, viewModelFactory)
-                .get(TaskCreatorViewModelImpl::class.java)
+        viewModelContract = ViewModelProviders.of(this, viewModelFactory)
+                .get(TaskCreatorViewModel::class.java)
 
-        val viewPagerItemList = ArrayList<FragmentlessViewPagerItem>(5)
+//        val viewPagerItemList = ArrayList<FragmentlessViewPagerItem>(5)
 
-        viewPagerItemList.add(FragmentlessViewPagerItem(
-                R.layout.layout_task_creator_name,
-                getString(R.string.title_create_task)))
+//        viewPagerItemList.add(FragmentlessViewPagerItem(
+//                R.layout.layout_task_creator_name,
+//                getString(R.string.title_create_task)))
 
-        viewPagerItemList.add(FragmentlessViewPagerItem(
-                R.layout.layout_task_creator_difficulty,
-                getString(R.string.title_create_task)))
+//        viewPagerItemList.add(FragmentlessViewPagerItem(
+//                R.layout.layout_task_creator_difficulty,
+//                getString(R.string.title_create_task)))
 
-        pagerAdapter = FragmentlessViewPagerAdapter(context!!, viewPagerItemList)
+        //pagerAdapter = FragmentlessViewPagerAdapter(context!!, viewPagerItemList)
     }
 
 
@@ -76,7 +86,22 @@ class TaskCreatorFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewPager.adapter = pagerAdapter
-        viewPager.getChildAt(1)
+
+        pagerAdapter.pages[0].taskDescriptionAddButton.setOnClickListener {
+            Toast.makeText(context,"Add description", Toast.LENGTH_SHORT).show()
+        }
+
+        toolbar.navigationIcon = ContextCompat.getDrawable(context!!, androidx.appcompat.R.drawable.abc_ic_ab_back_material)
+        toolbar.setNavigationOnClickListener(View.OnClickListener {
+            navigation!!.showHomeFragment()
+        })
+
+    }
+
+
+    override fun onDetach() {
+        super.onDetach()
+        navigation = null
     }
 
 

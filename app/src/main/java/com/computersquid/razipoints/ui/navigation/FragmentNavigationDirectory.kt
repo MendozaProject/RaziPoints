@@ -1,4 +1,4 @@
-package com.computersquid.razipoints.ui.interfaces
+package com.computersquid.razipoints.ui.navigation
 
 import com.computersquid.razipoints.data.model.Task
 

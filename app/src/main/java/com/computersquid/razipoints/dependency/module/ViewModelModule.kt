@@ -3,8 +3,7 @@ package com.computersquid.razipoints.dependency.module
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.computersquid.razipoints.dependency.ViewModelFactory
-import com.computersquid.razipoints.ui.viewmodel.HomeViewModelImpl
-import com.computersquid.razipoints.ui.viewmodel.TaskCreatorViewModelImpl
+import com.computersquid.razipoints.ui.viewmodel.*
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -26,12 +25,24 @@ internal abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(HomeViewModelImpl::class)
-    abstract fun bindHomeViewModel(viewModel: HomeViewModelImpl): ViewModel
+    @ViewModelKey(HomeViewModel::class)
+    abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
 
 
     @Binds
     @IntoMap
-    @ViewModelKey(TaskCreatorViewModelImpl::class)
-    abstract fun bindTaskCreatorViewModel(viewModel: TaskCreatorViewModelImpl): ViewModel
+    @ViewModelKey(TaskCreatorViewModel::class)
+    abstract fun bindTaskCreatorViewModel(viewModel: TaskCreatorViewModel): ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TaskInputDifficultyViewModel::class)
+    abstract fun bindTaskInputDifficultyViewModel(viewModel: TaskInputDifficultyViewModel): ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TaskInputInfoViewModel::class)
+    abstract fun bindTaskInputInfoViewModel(viewModel: TaskInputInfoViewModel): ViewModel
 }
