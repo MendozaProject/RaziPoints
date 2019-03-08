@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment() {
 
     private var navigation: FragmentNavigationDirectory? = null
     private lateinit var taskAdapter: TaskAdapter
-    private lateinit var viewModelContract: HomeViewModelContract
+    private lateinit var viewModel: HomeViewModelContract
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -48,20 +48,15 @@ class HomeFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
 
         AndroidSupportInjection.inject(this)
-        viewModelContract = ViewModelProviders.of(this, viewModelFactory)
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(HomeViewModel::class.java)
 
-        viewModelContract.tasksLiveData.observe(this, Observer<List<Task>> { tasks: List<Task> ->
+        viewModel.tasksLiveData.observe(this, Observer<List<Task>> { tasks: List<Task> ->
             taskAdapter.tasks = tasks as MutableList<Task>
             taskAdapter.notifyDataSetChanged()
         })
 
-//        viewModelContract.userLiveData.observe(this,
-//                Observer<User> { user: User ->
-//                    numPoints.text = user.points.toString()
-//                })
-
-        taskAdapter = TaskAdapter(context!!, R.layout.item_task, viewModelContract.tasks as MutableList<Task>)
+        taskAdapter = TaskAdapter(context!!, R.layout.item_task, viewModel.tasks as MutableList<Task>)
     }
 
 
@@ -81,12 +76,7 @@ class HomeFragment : BaseFragment() {
             navigation!!.showTaskCreationFragment(Task())
         }
         toolbarTitle.text = "Taskboard"
-        numPoints.text = resources.getQuantityString(R.plurals.num_points, viewModelContract.user.points, viewModelContract.user.points)
-    }
-
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+        numPoints.text = resources.getQuantityString(R.plurals.num_points, viewModel.user.points, viewModel.user.points)
     }
 
 

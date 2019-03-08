@@ -8,5 +8,5 @@ import javax.inject.Inject
 class TaskInputDifficultyViewModel
     @Inject constructor()
     : BaseViewModel(), TaskInputDifficultyViewModelContract {
-    override val task: Task = Task()
+    override var task: Task = Task()
 }
