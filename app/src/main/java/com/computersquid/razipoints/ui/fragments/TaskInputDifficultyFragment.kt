@@ -45,10 +45,8 @@ class TaskInputDifficultyFragment : BaseFragment() {
         taskWizardDone.setOnClickListener {
             view.findNavController().popBackStack(R.id.homeFragment, false)
         }
-    }
-
-    companion object {
-        @JvmStatic
-        val TAG: String = this::class.java.simpleName
+        taskWizardBack.setOnClickListener {
+            view.findNavController().popBackStack()
+        }
     }
 }

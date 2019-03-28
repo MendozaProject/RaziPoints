@@ -14,7 +14,6 @@ import com.computersquid.razipoints.R
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.ui.adapter.TaskAdapter
 import com.computersquid.razipoints.ui.mvvm.BaseFragment
-import com.computersquid.razipoints.ui.navigation.FragmentNavigationDirectory
 import com.computersquid.razipoints.ui.viewmodel.HomeViewModel
 import com.computersquid.razipoints.ui.viewmodel.contract.HomeViewModelContract
 import dagger.android.support.AndroidSupportInjection
@@ -25,7 +24,6 @@ import javax.inject.Inject
 
 class HomeFragment : BaseFragment() {
 
-    private var navigation: FragmentNavigationDirectory? = null
     private lateinit var taskAdapter: TaskAdapter
     private lateinit var viewModel: HomeViewModelContract
 
@@ -34,11 +32,6 @@ class HomeFragment : BaseFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is FragmentNavigationDirectory){
-            navigation = context
-        } else {
-            throw RuntimeException("$context must implement OnFragmentInteractionListener")
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,15 +71,5 @@ class HomeFragment : BaseFragment() {
 
     override fun onDetach() {
         super.onDetach()
-        navigation = null
-    }
-
-    companion object {
-
-        @JvmStatic
-        val TAG: String = this::class.java.simpleName
-
-        @JvmStatic
-        fun newInstance() = HomeFragment()
     }
 }

@@ -15,7 +15,6 @@ import com.computersquid.razipoints.R
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.ui.mvvm.BaseFragment
 import com.computersquid.razipoints.ui.adapter.FragmentlessViewPagerAdapter
-import com.computersquid.razipoints.ui.navigation.FragmentNavigationDirectory
 import com.computersquid.razipoints.ui.viewmodel.contract.TaskCreatorViewModelContract
 import com.computersquid.razipoints.ui.viewmodel.TaskCreatorViewModel
 import dagger.android.support.AndroidSupportInjection
@@ -31,26 +30,11 @@ class TaskCreatorFragment : BaseFragment() {
 
     private lateinit var pagerAdapter: FragmentlessViewPagerAdapter
     private lateinit var viewModelContract: TaskCreatorViewModelContract
-    private var navigation: FragmentNavigationDirectory? = null
-
-
-    val NAME_POSITION = 0
-    val DIFFICULTY_POSITION = 1
 
     private var task: Task? = null
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is FragmentNavigationDirectory){
-            navigation = context
-        } else {
-            throw RuntimeException("$context must implement OnFragmentInteractionListener") as Throwable
-        }
-    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,28 +76,5 @@ class TaskCreatorFragment : BaseFragment() {
         }
 
         toolbar.navigationIcon = ContextCompat.getDrawable(context!!, androidx.appcompat.R.drawable.abc_ic_ab_back_material)
-        toolbar.setNavigationOnClickListener(View.OnClickListener {
-            navigation!!.showHomeFragment()
-        })
-
-    }
-
-
-    override fun onDetach() {
-        super.onDetach()
-        navigation = null
-    }
-
-
-    companion object {
-        @JvmStatic val TAG: String = this::class.java.simpleName
-
-        @JvmStatic
-        fun newInstance(task: Task) =
-                TaskCreatorFragment().apply {
-                    arguments = Bundle().apply {
-                        putParcelable(TASK_PARAM, task)
-                    }
-                }
     }
 }

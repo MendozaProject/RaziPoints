@@ -21,16 +21,12 @@ constructor(
 
     override val userLiveData: ObjectBoxLiveData<User> = userRepository.getUserLiveData(1)
     override val tasksLiveData: ObjectBoxLiveData<Task> = taskRepository.getAllLiveData()
-    override val user: User
-        get() = userRepository.getById(1)
-    override val tasks: List<Task>
-        get() = taskRepository.getAll()
-
+    override val user: User get() = userRepository.getById(1)
+    override val tasks: List<Task> get() = taskRepository.getAll()
 
     init {
-
+        userRepository.add(User(points = 2))
     }
-
 
     override fun startTaskCreationFragment(fragmentManager: FragmentManager, actionId: Long){
         val fragmentTransaction = fragmentManager.beginTransaction()

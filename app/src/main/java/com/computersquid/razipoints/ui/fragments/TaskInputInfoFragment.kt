@@ -40,16 +40,14 @@ class TaskInputInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         taskWizardBack.visibility = View.VISIBLE
-        taskWizardNext.visibility = View.GONE
-        taskWizardDone.visibility = View.VISIBLE
-        taskWizardDone.setOnClickListener {
+        taskWizardNext.visibility = View.VISIBLE
+        taskWizardDone.visibility = View.GONE
+        taskWizardNext.setOnClickListener {
             val action = TaskInputInfoFragmentDirections.actionTaskInputInfoFragmentToTaskInputDifficultyFragment (viewModel.task)
             view.findNavController().navigate(action)
         }
-    }
-
-    companion object {
-        @JvmStatic
-        val TAG: String = this::class.java.simpleName
+        taskWizardBack.setOnClickListener {
+            view.findNavController().popBackStack()
+        }
     }
 }
