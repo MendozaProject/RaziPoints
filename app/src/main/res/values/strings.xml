@@ -10,8 +10,6 @@
     <string name="header_finished_tasks">Finished Tasks</string>
     <string name="header_future_due">Future Due</string>
     <string name="done">Done</string>
-    <string name="next">Next</string>
-    <string name="back">Back</string>
     <string name="task_what">What is the task?</string>
     <string name="task_difficulty">How difficult is this task?</string>
     <string name="task_add_description">Add Description</string>
@@ -20,4 +18,7 @@
     <string name="difficulty_hard">Hard</string>
     <string name="title_create_task">Create Task</string>
     <string name="title_edit_task">Edit Task</string>
+    <string name="create_task">Create Task!</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
 </resources>

@@ -37,12 +37,6 @@ internal abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(TaskInputDifficultyViewModel::class)
-    abstract fun bindTaskInputDifficultyViewModel(viewModel: TaskInputDifficultyViewModel): ViewModel
-
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(TaskInputInfoViewModel::class)
-    abstract fun bindTaskInputInfoViewModel(viewModel: TaskInputInfoViewModel): ViewModel
+    @ViewModelKey(TaskEditorViewModel::class)
+    abstract fun bindTaskInputDifficultyViewModel(viewModel: TaskEditorViewModel): ViewModel
 }

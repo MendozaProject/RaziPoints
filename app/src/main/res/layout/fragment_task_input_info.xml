@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,21 +10,34 @@
     <TextView
         style="@style/Text.Header"
         android:text="@string/task_what"
-        android:layout_gravity="center"
-        />
+        android:layout_gravity="top|center_horizontal" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/taskNameTextInputField"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/double_padding"
-        android:layout_marginBottom="@dimen/double_padding"/>
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/taskDescriptionAddButton"
-        android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/taskNameTextInputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/double_padding"
+            android:layout_marginBottom="@dimen/double_padding"/>
+
+        <Button
+            android:id="@+id/taskDescriptionAddButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_add_description"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/controls_task_wizard"
         android:layout_height="wrap_content"
-        android:text="@string/task_add_description"
-        android:layout_gravity="center"/>
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"/>
 
-</LinearLayout>
+</FrameLayout>

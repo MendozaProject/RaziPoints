@@ -34,7 +34,7 @@ class TheWillOfGod : AppCompatActivity(), FragmentNavigationDirectory {
 
     private fun showFragment (fragment : Fragment?, tag: String) {
         fragmentManager.beginTransaction()
-                .replace(this.rootContainer.id, fragment!!, tag)
+                .replace(this.nav_host_fragment.id, fragment!!, tag)
                 .commit()
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -8,12 +8,14 @@
     <TextView
         style="@style/Text.Header"
         android:text="@string/task_difficulty"
-        android:layout_margin="@dimen/default_padding"/>
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="48dp"/>
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_gravity="center">
 
         <RadioButton
             style="@style/Text.Default"
@@ -48,4 +50,10 @@
 
     </RadioGroup>
 
-</LinearLayout>
+    <include
+        layout="@layout/controls_task_wizard"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"/>
+
+</FrameLayout>

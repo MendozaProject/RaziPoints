@@ -9,20 +9,43 @@
         android:name="com.computersquid.razipoints.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
+        <argument
+            android:name="editTask"
+            app:argType="com.computersquid.razipoints.data.model.Task"
+            app:nullable="true"
+            android:defaultValue="@null"/>
         <action
             android:id="@+id/action_homeFragment_to_taskInputInfoFragment"
-            app:destination="@id/taskInputInfoFragment" />
+            app:destination="@id/taskInputInfoFragment">
+        </action>
+
     </fragment>
     <fragment
         android:id="@+id/taskInputInfoFragment"
         android:name="com.computersquid.razipoints.ui.fragments.TaskInputInfoFragment"
         android:label="TaskInputInfoFragment" >
+        <argument
+            android:name="editTask"
+            app:argType="com.computersquid.razipoints.data.model.Task"
+            app:nullable="true"
+            android:defaultValue="@null"/>
         <action
             android:id="@+id/action_taskInputInfoFragment_to_taskInputDifficultyFragment"
-            app:destination="@id/taskInputDifficultyFragment" />
+            app:destination="@id/taskInputDifficultyFragment" >
+        </action>
     </fragment>
+
     <fragment
         android:id="@+id/taskInputDifficultyFragment"
         android:name="com.computersquid.razipoints.ui.fragments.TaskInputDifficultyFragment"
-        android:label="TaskInputDifficultyFragment" />
+        android:label="TaskInputDifficultyFragment" >
+        <argument
+            android:name="editTask"
+            app:argType="com.computersquid.razipoints.data.model.Task"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_taskInputDifficultyFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
