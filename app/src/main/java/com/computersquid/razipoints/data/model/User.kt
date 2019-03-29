@@ -1,10 +1,12 @@
 package com.computersquid.razipoints.data.model
 
-import io.objectbox.annotation.Entity
-import io.objectbox.annotation.Id
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "user")
 data class User(
-        @Id var id: Long = 0,
-        var points: Int
+        @PrimaryKey var id: Long = 0,
+        @ColumnInfo(name = "name") var name: String,
+        @ColumnInfo(name = "points") var points: Int
 )

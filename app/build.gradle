@@ -6,8 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'io.objectbox'
-
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
@@ -44,6 +42,8 @@ dependencies {
     implementation "android.arch.navigation:navigation-fragment:$navigation_version"
     implementation "android.arch.navigation:navigation-ui-ktx:$navigation_version"
 
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
@@ -58,11 +58,9 @@ dependencies {
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test:runner:$test_runner_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
-
-
-
 }

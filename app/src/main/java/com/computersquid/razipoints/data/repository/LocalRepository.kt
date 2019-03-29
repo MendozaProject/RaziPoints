@@ -1,18 +1,15 @@
 package com.computersquid.razipoints.data.repository
 
-import io.objectbox.BoxStore
-import io.objectbox.Box
+import android.content.Context
+import androidx.room.Room
+import com.computersquid.razipoints.data.database.AppDatabase
 
 
-open class LocalRepository<T>(boxStore: BoxStore, val clazz: Class<T>) {
+open class LocalRepository<T>(context: Context, tableName: String) {
 
-    val box: Box<T>
+
 
     init {
-        box = boxStore.boxFor(clazz)
-    }
-
-    companion object {
-
+        var noteDatabase = Room.databaseBuilder(context, AppDatabase::class.java, "app-database").build()
     }
 }

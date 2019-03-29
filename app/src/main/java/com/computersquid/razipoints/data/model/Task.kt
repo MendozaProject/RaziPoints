@@ -2,16 +2,17 @@ package com.computersquid.razipoints.data.model
 
 import android.annotation.SuppressLint
 import android.os.Parcelable
-import io.objectbox.annotation.Entity
-import io.objectbox.annotation.Id
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-@Entity
+@Entity(tableName = "tasks")
 @SuppressLint("ParcelCreator")
 @Parcelize
 data class Task(
-        @Id var id: Long = 0,
-        var name: String = "New Task",
-        var value: Int = 0,
-        var done: Boolean = false
+        @PrimaryKey var id: Long = 0,
+        @ColumnInfo(name = "name") var name: String = "New Task",
+        @ColumnInfo(name = "value") var value: Int = 0,
+        @ColumnInfo(name = "done") var done: Boolean = false
 ): Parcelable
