@@ -7,9 +7,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "tasks")
 @SuppressLint("ParcelCreator")
 @Parcelize
+@Entity(tableName = "tasks")
 data class Task(
         @PrimaryKey var id: Long = 0,
         @ColumnInfo(name = "name") var name: String = "New Task",

@@ -18,22 +18,18 @@ internal abstract class ViewModelModule {
     @MapKey
     internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
 
-
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
-
 
     @Binds
     @IntoMap
     @ViewModelKey(HomeViewModel::class)
     abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
 
-
     @Binds
     @IntoMap
     @ViewModelKey(TaskCreatorViewModel::class)
     abstract fun bindTaskCreatorViewModel(viewModel: TaskCreatorViewModel): ViewModel
-
 
     @Binds
     @IntoMap

@@ -47,7 +47,7 @@ class HomeFragment : BaseFragment() {
             taskAdapter.notifyDataSetChanged()
         })
 
-        taskAdapter = TaskAdapter(context!!, R.layout.item_task, viewModel.tasks as MutableList<Task>)
+        taskAdapter = TaskAdapter(context!!, R.layout.item_task, viewModel.tasksLiveData.value as MutableList<Task>)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -66,7 +66,7 @@ class HomeFragment : BaseFragment() {
         }
         toolbarTitle.text = "Taskboard"
         numPoints.text = resources.getQuantityString(
-                R.plurals.num_points, viewModel.user.points, viewModel.user.points)
+                R.plurals.num_points, viewModel.userLiveData.value!!.points, viewModel.userLiveData.value!!.points)
     }
 
     override fun onDetach() {

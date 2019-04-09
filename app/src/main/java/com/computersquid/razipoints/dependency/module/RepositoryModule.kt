@@ -1,9 +1,9 @@
 package com.computersquid.razipoints.dependency.module
 
+import com.computersquid.razipoints.data.dao.TaskDao
 import com.computersquid.razipoints.data.repository.TaskRepository
 import dagger.Module
 import dagger.Provides
-import io.objectbox.BoxStore
 import javax.inject.Singleton
 
 @Module(
@@ -14,7 +14,7 @@ object RepositoryModule {
     @Provides
     @Singleton
     @JvmStatic
-    fun provideTaskRepository(boxStore: BoxStore): TaskRepository {
-        return TaskRepository(boxStore)
+    fun provideTaskRepository(taskDao: TaskDao): TaskRepository {
+        return TaskRepository(taskDao)
     }
 }

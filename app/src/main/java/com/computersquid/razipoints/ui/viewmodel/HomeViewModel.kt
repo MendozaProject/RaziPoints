@@ -1,6 +1,7 @@
 package com.computersquid.razipoints.ui.viewmodel
 
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.LiveData
 import com.computersquid.razipoints.data.repository.TaskRepository
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.data.model.User
@@ -8,7 +9,6 @@ import com.computersquid.razipoints.data.repository.UserRepository
 import com.computersquid.razipoints.ui.mvvm.BaseViewModel
 import com.computersquid.razipoints.ui.fragments.TaskCreationDialogFragment
 import com.computersquid.razipoints.ui.viewmodel.contract.HomeViewModelContract
-import io.objectbox.android.ObjectBoxLiveData
 import javax.inject.Inject
 
 
@@ -19,13 +19,11 @@ constructor(
         private val userRepository: UserRepository
 ) : HomeViewModelContract, BaseViewModel()  {
 
-    override val userLiveData: ObjectBoxLiveData<User> = userRepository.getUserLiveData(1)
-    override val tasksLiveData: ObjectBoxLiveData<Task> = taskRepository.getAllLiveData()
-    override val user: User get() = userRepository.getById(1)
-    override val tasks: List<Task> get() = taskRepository.getAll()
+    override val userLiveData: LiveData<User> = userRepository.getById(1)
+    override val tasksLiveData: LiveData<List<Task>> = taskRepository.getAll()
 
     init {
-        userRepository.add(User(points = 2))
+        //userRepository.add(User(points = 2, name = "Zoe LeClair"))
     }
 
     override fun startTaskCreationFragment(fragmentManager: FragmentManager, actionId: Long){
@@ -46,11 +44,8 @@ constructor(
 
     }
 
-
-    override fun addTestTask(task: Task): Long {
-        val ret = taskRepository.add(task)
-        assert(ret > 0)
-        return ret
+    override fun addTestTask(task: Task) {
+        taskRepository.add(task)
     }
 
 

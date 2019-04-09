@@ -7,9 +7,7 @@ import com.computersquid.razipoints.data.database.AppDatabase
 
 open class LocalRepository<T>(context: Context, tableName: String) {
 
-
-
     init {
-        var noteDatabase = Room.databaseBuilder(context, AppDatabase::class.java, "app-database").build()
+        var database = Room.databaseBuilder(context, AppDatabase::class.java, "app-database").build()
     }
 }
