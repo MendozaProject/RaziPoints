@@ -2,19 +2,16 @@ package com.computersquid.razipoints.application
 
 import android.app.Application
 import androidx.fragment.app.Fragment
-import androidx.room.Room
 import com.computersquid.razipoints.R
-import com.computersquid.razipoints.data.database.AppDatabase
 import com.computersquid.razipoints.dependency.component.AppComponent
 import com.computersquid.razipoints.dependency.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
-import javax.inject.Inject
 import io.github.inflationx.calligraphy3.CalligraphyConfig
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor
 import io.github.inflationx.viewpump.ViewPump
-
+import javax.inject.Inject
 
 
 class MainApplication: Application(), HasSupportFragmentInjector {

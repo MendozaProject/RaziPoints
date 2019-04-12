@@ -17,8 +17,4 @@ class UserRepository @Inject constructor(private val userDao: UserDao){
     fun getUser(): LiveData<User> {
         return userDao.getById(1)
     }
-
-    fun add(user: User) {
-        userDao.insert(user)
-    }
 }

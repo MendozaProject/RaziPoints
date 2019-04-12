@@ -6,9 +6,6 @@ import javax.inject.Inject
 
 class TaskRepository @Inject constructor(private val taskDao: TaskDao){
 
-    init {
-    }
-
     fun getAll(): LiveData<List<Task>> {
         return taskDao.getAll()
     }
