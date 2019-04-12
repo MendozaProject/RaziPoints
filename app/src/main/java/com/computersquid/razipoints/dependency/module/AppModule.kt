@@ -12,6 +12,10 @@ import com.computersquid.razipoints.data.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
+import androidx.sqlite.db.SupportSQLiteDatabase
+import android.os.AsyncTask.execute
+import java.util.concurrent.Executors
+
 
 @Module()
 object AppModule {

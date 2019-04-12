@@ -7,12 +7,15 @@ import javax.inject.Inject
 class UserRepository @Inject constructor(private val userDao: UserDao){
 
     init {
-        userDao.getAll()
-        userDao.insert(User())
+        // Initializes the default User if none exists
+        if (userDao.count() == 0){
+            userDao.insert(User())
+        }
+        assert(userDao.count() <= 1)
     }
 
-    fun getById(id: Int): LiveData<User> {
-        return userDao.getById(id)
+    fun getUser(): LiveData<User> {
+        return userDao.getById(1)
     }
 
     fun add(user: User) {

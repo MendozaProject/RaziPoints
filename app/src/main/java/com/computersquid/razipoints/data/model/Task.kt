@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 
 @SuppressLint("ParcelCreator")
 @Parcelize
-@Entity(tableName = "tasks")
+@Entity(tableName = TASK_TABLE_NAME)
 data class Task(
         @PrimaryKey(autoGenerate = true) var id: Long = 0,
         @ColumnInfo(name = "name") var name: String = "New Task",

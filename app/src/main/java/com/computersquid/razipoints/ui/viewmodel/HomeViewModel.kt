@@ -19,7 +19,7 @@ constructor(
         private val userRepository: UserRepository
 ) : HomeViewModelContract, BaseViewModel()  {
 
-    override val userLiveData: LiveData<User> = userRepository.getById(1)
+    override val userLiveData: LiveData<User> = userRepository.getUser()
     override val tasksLiveData: LiveData<List<Task>> = taskRepository.getAll()
 
     override fun markTaskAsDone(task: Task) {
