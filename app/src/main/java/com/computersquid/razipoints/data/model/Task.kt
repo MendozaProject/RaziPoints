@@ -11,7 +11,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "tasks")
 data class Task(
-        @PrimaryKey var id: Long = 0,
+        @PrimaryKey(autoGenerate = true) var id: Long = 0,
         @ColumnInfo(name = "name") var name: String = "New Task",
         @ColumnInfo(name = "value") var value: Int = 0,
         @ColumnInfo(name = "done") var done: Boolean = false

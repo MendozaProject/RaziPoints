@@ -16,7 +16,7 @@ interface TaskDao {
     fun loadAllByIds(taskIds: IntArray): LiveData<List<Task>>
 
     @Insert
-    fun insertAll(vararg tasks: Task)
+    fun insert(vararg tasks: Task)
 
     @Delete
     fun delete(task: Task)

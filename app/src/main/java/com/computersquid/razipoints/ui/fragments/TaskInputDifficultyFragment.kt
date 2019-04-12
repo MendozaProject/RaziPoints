@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import com.computersquid.razipoints.R
 import com.computersquid.razipoints.ui.mvvm.BaseFragment
 import com.computersquid.razipoints.ui.viewmodel.TaskEditorViewModel
+import com.computersquid.razipoints.ui.viewmodel.contract.TaskEditorViewModelContract
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.controls_task_wizard.*
 import kotlinx.android.synthetic.main.fragment_task_creator.view.*
@@ -19,7 +20,7 @@ import javax.inject.Inject
 
 class TaskInputDifficultyFragment : BaseFragment() {
 
-    private lateinit var viewModel: TaskEditorViewModel
+    private lateinit var viewModel: TaskEditorViewModelContract
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -42,7 +43,9 @@ class TaskInputDifficultyFragment : BaseFragment() {
         taskWizardBack.visibility = View.VISIBLE
         taskWizardNext.visibility = View.GONE
         taskWizardDone.visibility = View.VISIBLE
+
         taskWizardDone.setOnClickListener {
+            viewModel.saveTask()
             view.findNavController().popBackStack(R.id.homeFragment, false)
         }
         taskWizardBack.setOnClickListener {

@@ -31,7 +31,7 @@ class ViewModelFactory @Inject constructor(
         try {
             return creator.get() as T
         } catch (e: Exception) {
-            throw RuntimeException(e)
+             throw RuntimeException(e)
         }
     }
 }

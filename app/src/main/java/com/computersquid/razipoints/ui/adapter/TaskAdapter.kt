@@ -11,7 +11,7 @@ import com.computersquid.razipoints.ui.viewholder.TaskItemViewHolder
 class TaskAdapter(
         private var context: Context,
         itemView:Int,
-        var tasks: MutableList<Task>)
+        var tasks: List<Task>)
     : RecyclerView.Adapter<TaskItemViewHolder>() {
 
     private var view: Int = itemView

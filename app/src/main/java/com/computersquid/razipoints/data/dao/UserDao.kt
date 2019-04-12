@@ -17,7 +17,7 @@ interface UserDao {
     fun loadAllByIds(userIds: IntArray): List<User>
 
     @Insert
-    fun insertAll(vararg users: User)
+    fun insert(vararg users: User)
 
     @Delete
     fun delete(user: User)

@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.computersquid.razipoints.R
 import com.computersquid.razipoints.data.model.Task
+import com.computersquid.razipoints.data.model.User
 import com.computersquid.razipoints.ui.adapter.TaskAdapter
 import com.computersquid.razipoints.ui.mvvm.BaseFragment
 import com.computersquid.razipoints.ui.viewmodel.HomeViewModel
@@ -41,13 +42,7 @@ class HomeFragment : BaseFragment() {
 
         viewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(HomeViewModel::class.java)
-
-        viewModel.tasksLiveData.observe(this, Observer<List<Task>> { tasks: List<Task> ->
-            taskAdapter.tasks = tasks as MutableList<Task>
-            taskAdapter.notifyDataSetChanged()
-        })
-
-        taskAdapter = TaskAdapter(context!!, R.layout.item_task, viewModel.tasksLiveData.value as MutableList<Task>)
+        taskAdapter = TaskAdapter(context!!, R.layout.item_task, emptyList())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -60,13 +55,19 @@ class HomeFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = taskAdapter
         }
+
+        viewModel.tasksLiveData.observe(this, Observer<List<Task>> { tasks: List<Task> ->
+            taskAdapter.tasks = tasks as MutableList<Task>
+            taskAdapter.notifyDataSetChanged()
+        })
+        viewModel.userLiveData.observe(this, Observer<User> { user: User ->
+            numPoints.text = resources.getQuantityString(R.plurals.num_points, user.points, user.points)
+        })
         addActionFab.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToTaskInputInfoFragment (Task())
             view.findNavController().navigate(action)
         }
         toolbarTitle.text = "Taskboard"
-        numPoints.text = resources.getQuantityString(
-                R.plurals.num_points, viewModel.userLiveData.value!!.points, viewModel.userLiveData.value!!.points)
     }
 
     override fun onDetach() {

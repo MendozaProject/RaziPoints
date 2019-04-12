@@ -22,34 +22,11 @@ constructor(
     override val userLiveData: LiveData<User> = userRepository.getById(1)
     override val tasksLiveData: LiveData<List<Task>> = taskRepository.getAll()
 
-    init {
-        //userRepository.add(User(points = 2, name = "Zoe LeClair"))
-    }
-
-    override fun startTaskCreationFragment(fragmentManager: FragmentManager, actionId: Long){
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        val previousFragment = fragmentManager.findFragmentByTag(TaskCreationDialogFragment.TAG)
-
-        if (previousFragment != null) {
-            fragmentTransaction.remove(previousFragment)
-        }
-        fragmentTransaction.addToBackStack(null)
-
-        val actionDialog = TaskCreationDialogFragment.newInstance(0)
-        actionDialog.show(fragmentManager, TaskCreationDialogFragment.TAG)
-    }
-
-
     override fun markTaskAsDone(task: Task) {
 
     }
 
     override fun addTestTask(task: Task) {
         taskRepository.add(task)
-    }
-
-
-    companion object {
-        @JvmStatic val TAG: String = this::class.java.simpleName
     }
 }

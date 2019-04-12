@@ -10,7 +10,6 @@ interface HomeViewModelContract {
     val userLiveData: LiveData<User>
     val tasksLiveData: LiveData<List<Task>>
 
-    fun startTaskCreationFragment(fragmentManager: FragmentManager, actionId: Long)
     fun markTaskAsDone(task: Task)
     fun addTestTask(task:Task)
 }
