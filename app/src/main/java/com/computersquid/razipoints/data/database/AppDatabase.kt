@@ -6,6 +6,10 @@ import com.computersquid.razipoints.data.dao.TaskDao
 import com.computersquid.razipoints.data.dao.UserDao
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.data.model.User
+import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room.migration.Migration
+
+
 
 @Database(entities = [User::class, Task::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

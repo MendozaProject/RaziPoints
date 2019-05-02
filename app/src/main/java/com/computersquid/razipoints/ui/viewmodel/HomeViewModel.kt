@@ -1,13 +1,11 @@
 package com.computersquid.razipoints.ui.viewmodel
 
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import com.computersquid.razipoints.data.repository.TaskRepository
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.data.model.User
 import com.computersquid.razipoints.data.repository.UserRepository
 import com.computersquid.razipoints.ui.mvvm.BaseViewModel
-import com.computersquid.razipoints.ui.fragments.TaskCreationDialogFragment
 import com.computersquid.razipoints.ui.viewmodel.contract.HomeViewModelContract
 import javax.inject.Inject
 

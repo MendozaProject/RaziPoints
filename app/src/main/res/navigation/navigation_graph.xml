@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
     app:startDestination="@id/homeFragment">
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.computersquid.razipoints.ui.fragments.HomeFragment"
@@ -16,8 +17,10 @@
             android:defaultValue="@null"/>
         <action
             android:id="@+id/action_homeFragment_to_taskInputInfoFragment"
-            app:destination="@id/taskInputInfoFragment">
-        </action>
+            app:destination="@id/taskInputInfoFragment"/>
+        <action
+            android:id="@+id/action_homeFragment_to_taskInputStartFragment"
+            app:destination="@id/taskInputStartFragment"/>
 
     </fragment>
     <fragment
@@ -47,5 +50,18 @@
         <action
             android:id="@+id/action_taskInputDifficultyFragment_to_homeFragment2"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskInputStartFragment"
+        android:name="com.computersquid.razipoints.ui.fragments.TaskInputStartFragment"
+        android:label="TaskInputStartFragment" >
+        <argument
+            android:name="editTask"
+            app:argType="com.computersquid.razipoints.data.model.Task"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+        <action
+            android:id="@+id/action_taskInputStartFragment_to_taskInputInfoFragment"
+            app:destination="@id/taskInputInfoFragment" />
     </fragment>
 </navigation>

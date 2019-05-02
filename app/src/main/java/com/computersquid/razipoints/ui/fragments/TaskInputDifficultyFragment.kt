@@ -14,7 +14,7 @@ import com.computersquid.razipoints.ui.viewmodel.TaskEditorViewModel
 import com.computersquid.razipoints.ui.viewmodel.contract.TaskEditorViewModelContract
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.controls_task_wizard.*
-import kotlinx.android.synthetic.main.fragment_task_creator.view.*
+import kotlinx.android.synthetic.main.fragment_task_input_difficulty.*
 import javax.inject.Inject
 
 
@@ -30,9 +30,6 @@ class TaskInputDifficultyFragment : BaseFragment() {
         AndroidSupportInjection.inject(this)
         viewModel = ViewModelProviders.of(activity!!, viewModelFactory)
                 .get(TaskEditorViewModel::class.java)
-
-        val task = TaskInputInfoFragmentArgs.fromBundle(this.arguments!!).editTask!!
-        viewModel.task = task
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -50,6 +47,15 @@ class TaskInputDifficultyFragment : BaseFragment() {
         }
         taskWizardBack.setOnClickListener {
             view.findNavController().popBackStack()
+        }
+        easyDifficultySelect.setOnClickListener{
+            viewModel.taskLiveData.value!!.value = 1
+        }
+        mediumDifficultySelect.setOnClickListener{
+            viewModel.taskLiveData.value!!.value = 2
+        }
+        hardDifficultySelect.setOnClickListener{
+            viewModel.taskLiveData.value!!.value = 3
         }
     }
 }

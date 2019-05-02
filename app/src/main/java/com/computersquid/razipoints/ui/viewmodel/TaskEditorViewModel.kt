@@ -1,5 +1,7 @@
 package com.computersquid.razipoints.ui.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.computersquid.razipoints.data.model.Task
 import com.computersquid.razipoints.data.repository.TaskRepository
 import com.computersquid.razipoints.ui.mvvm.BaseViewModel
@@ -10,9 +12,11 @@ class TaskEditorViewModel @Inject constructor(
         private val taskRepository: TaskRepository
 ) : BaseViewModel(), TaskEditorViewModelContract {
 
-    override var task: Task = Task()
+    override val taskLiveData: MutableLiveData<Task> by lazy {
+        MutableLiveData<Task>()
+    }
 
     override fun saveTask(){
-        taskRepository.add(task)
+        taskRepository.add(taskLiveData.value!!)
     }
 }

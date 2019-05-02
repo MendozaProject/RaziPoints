@@ -23,7 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/double_padding"
-            android:layout_marginBottom="@dimen/double_padding"/>
+            android:layout_marginBottom="@dimen/double_padding"
+            android:maxLines="1"/>
 
         <Button
             android:id="@+id/taskDescriptionAddButton"
@@ -31,6 +32,29 @@
             android:layout_height="wrap_content"
             android:text="@string/task_add_description"
             android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/taskDescriptionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/taskDescriptionTextInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/double_padding"
+                android:layout_marginBottom="@dimen/double_padding" />
+
+            <Button
+                android:id="@+id/taskDescriptionCancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 

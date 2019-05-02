@@ -1,9 +1,6 @@
 package com.computersquid.razipoints.dependency.module
 
-import com.computersquid.razipoints.ui.fragments.HomeFragment
-import com.computersquid.razipoints.ui.fragments.TaskCreatorFragment
-import com.computersquid.razipoints.ui.fragments.TaskInputDifficultyFragment
-import com.computersquid.razipoints.ui.fragments.TaskInputInfoFragment
+import com.computersquid.razipoints.ui.fragments.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -14,11 +11,11 @@ abstract class FragmentBindingModule {
     abstract fun bindHomeFragment(): HomeFragment
 
     @ContributesAndroidInjector
-    abstract fun bindTaskCreatorFragment(): TaskCreatorFragment
-
-    @ContributesAndroidInjector
     abstract fun bindTaskInputDifficultyFragment(): TaskInputDifficultyFragment
 
     @ContributesAndroidInjector
     abstract fun bindTaskInputInfoFragment(): TaskInputInfoFragment
+
+    @ContributesAndroidInjector
+    abstract fun bindTaskInputStartFragment(): TaskInputStartFragment
 }

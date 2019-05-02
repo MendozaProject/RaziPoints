@@ -13,6 +13,7 @@ import kotlinx.android.parcel.Parcelize
 data class Task(
         @PrimaryKey(autoGenerate = true) var id: Long = 0,
         @ColumnInfo(name = "name") var name: String = "New Task",
+        @ColumnInfo(name = "description") var description: String = "",
         @ColumnInfo(name = "value") var value: Int = 0,
         @ColumnInfo(name = "done") var done: Boolean = false
 ): Parcelable
