@@ -12,19 +12,19 @@
     </style>
 
     <style name="Text">
+        <item name="fontPath">fonts/Quicksand-Bold.otf</item>
         <item name="android:textColor">@color/defaultTextColor</item>
+        <item name="android:textSize">@dimen/smallTextSize</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="Text.Header" parent="Text">
-        <item name="fontPath">fonts/Quicksand-Bold.otf</item>
-        <item name="android:textSize">@dimen/xLargeTextSize</item>
+    <style name="Text.Toolbar" parent="Text">
+        <item name="android:textSize">@dimen/mediumTextSize</item>
     </style>
 
-
-    <style name="Text.Default" parent="Text">
-
+    <style name="Text.Header" parent="Text">
+        <item name="android:textSize">@dimen/xLargeTextSize</item>
     </style>
 
     <style name="Text.Header.ItemTitle" parent="Text">

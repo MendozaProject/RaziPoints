@@ -64,7 +64,7 @@ class HomeFragment : BaseFragment() {
             numPoints.text = resources.getQuantityString(R.plurals.num_points, user.points, user.points)
         })
         addActionFab.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToTaskInputStartFragment (Task())
+            val action = HomeFragmentDirections.actionHomeFragmentToTaskInputInfoFragment (Task())
             view.findNavController().navigate(action)
         }
         toolbarTitle.text = "Taskboard"

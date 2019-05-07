@@ -31,9 +31,8 @@ class TaskInputInfoFragment : Fragment() {
         AndroidSupportInjection.inject(this)
         viewModel = ViewModelProviders.of(activity!!, viewModelFactory)
                 .get(TaskEditorViewModel::class.java)
-
-//        val task = TaskInputInfoFragmentArgs.fromBundle(this.arguments!!).editTask!!
-//        viewModel.taskLiveData.value = task
+        val task = TaskInputInfoFragmentArgs.fromBundle(this.arguments!!).editTask!!
+        viewModel.taskLiveData.value = task
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

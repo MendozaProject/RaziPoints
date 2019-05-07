@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <Button
-            style="@style/Text.Default"
+            style="@style/Text"
             android:id="@+id/easyDifficultySelect"
             android:layout_width="200dp"
             android:textAlignment="center"
@@ -28,7 +28,7 @@
             android:layout_margin="@dimen/default_padding"/>
 
         <Button
-            style="@style/Text.Default"
+            style="@style/Text"
             android:id="@+id/mediumDifficultySelect"
             android:layout_width="200dp"
             android:textAlignment="center"
@@ -36,7 +36,7 @@
             android:padding="@dimen/default_padding"
             android:layout_margin="@dimen/default_padding"/>
         <Button
-            style="@style/Text.Default"
+            style="@style/Text"
             android:id="@+id/hardDifficultySelect"
             android:layout_width="200dp"
             android:textAlignment="center"

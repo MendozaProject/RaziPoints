@@ -15,7 +15,4 @@ abstract class FragmentBindingModule {
 
     @ContributesAndroidInjector
     abstract fun bindTaskInputInfoFragment(): TaskInputInfoFragment
-
-    @ContributesAndroidInjector
-    abstract fun bindTaskInputStartFragment(): TaskInputStartFragment
 }
